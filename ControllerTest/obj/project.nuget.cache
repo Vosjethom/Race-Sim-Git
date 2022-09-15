@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FUXEHX2uG0BMzIWSVll6biuRIhY5FVc3sEGxCm9Z9ab4H4BjKGfxH4BcExQ2lbB+kOelCf66yWe+eiQgxkcf6w==",
+  "dgSpecHash": "hEKEBCYDjbocn6vCZWZK7Cnqzl5PIzJkkIQmoumaOr7PBa2Yd7u9dDzZ3P4XqGIp7C490thzJj169AFMJm6OYQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\thomv\\OneDrive\\Bureaublad\\School\\Jaar 2\\C#\\Tasker_Race_Sim\\ControllerTest\\ControllerTest.csproj",
+  "projectFilePath": "C:\\Users\\thomv\\OneDrive\\Bureaublad\\School\\Jaar 2\\C#\\Race-Sim-Git\\ControllerTest\\ControllerTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thomv\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\thomv\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",
