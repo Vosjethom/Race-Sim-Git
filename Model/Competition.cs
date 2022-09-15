@@ -15,8 +15,8 @@ namespace Model
         public Queue<Track> Tracks { get; set; }
     }
 
-    public Track NextTrack()
-    {
-        
-    }
+    //public Track NextTrack()
+    //{
+
+    //}
 }

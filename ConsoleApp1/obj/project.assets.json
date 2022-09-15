@@ -4026,9 +4026,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thomv\\OneDrive\\Bureaublad\\School\\Jaar 2\\C#\\Race-Sim-Git\\ConsoleApp1\\RaceSim.csproj",
-      "projectName": "RaceSim",
-      "projectPath": "C:\\Users\\thomv\\OneDrive\\Bureaublad\\School\\Jaar 2\\C#\\Race-Sim-Git\\ConsoleApp1\\RaceSim.csproj",
+      "projectUniqueName": "C:\\Users\\thomv\\OneDrive\\Bureaublad\\School\\Jaar 2\\C#\\Race-Sim-Git\\ConsoleApp1\\Tasker_Race_Sim.csproj",
+      "projectName": "Tasker_Race_Sim",
+      "projectPath": "C:\\Users\\thomv\\OneDrive\\Bureaublad\\School\\Jaar 2\\C#\\Race-Sim-Git\\ConsoleApp1\\Tasker_Race_Sim.csproj",
       "packagesPath": "C:\\Users\\thomv\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\thomv\\OneDrive\\Bureaublad\\School\\Jaar 2\\C#\\Race-Sim-Git\\ConsoleApp1\\obj\\",
       "projectStyle": "PackageReference",

@@ -8,7 +8,7 @@ namespace Model
 {
     public class Driver : iParticipant
     {
-        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Name { get; set; }
         public int Points { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public iEquipment Equipment { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public TeamColors TeamColor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

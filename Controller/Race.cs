@@ -12,8 +12,7 @@ namespace Controller
     {
         public Race(Track baan, List<iParticipant> deelnemer)
         {
-            Data.Track();
-            Data.iParticipant();
+
         }
 
         public Track Track { get; set; }
