@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Model
+﻿namespace Model
 {
     public class Track
     {
@@ -13,7 +7,7 @@ namespace Model
         {
             //Name = name;
             //Sections = sections;
-            
+
         }
 
         public string Name { get; set; }

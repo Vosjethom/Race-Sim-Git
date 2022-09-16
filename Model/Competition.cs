@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Model
+﻿namespace Model
 {
     public class Competition
     {
@@ -14,6 +6,12 @@ namespace Model
         public List<iParticipant> Participants { get; set; }
 
         public Queue<Track> Tracks;
+
+        public Competition()
+        {
+            Tracks = new Queue<Track>();
+            Participants = new List<iParticipant>();
+        }
 
         public Track? NextTrack()
         {

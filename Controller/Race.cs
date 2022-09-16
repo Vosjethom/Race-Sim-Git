@@ -1,10 +1,4 @@
 ﻿using Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Controller
 {
@@ -31,7 +25,7 @@ namespace Controller
         {
             if (_positions.TryGetValue(sector, out var sectionData))
             {
-                    return sectionData;
+                return sectionData;
             }
             else
             {

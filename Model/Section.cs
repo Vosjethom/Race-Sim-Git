@@ -7,10 +7,10 @@
 
     public enum SectionTypes
     {
-            Straight,
-            LeftCorner,
-            RightCorner,
-            StartGrid,
-            Finish,
+        Straight,
+        LeftCorner,
+        RightCorner,
+        StartGrid,
+        Finish,
     }
 }

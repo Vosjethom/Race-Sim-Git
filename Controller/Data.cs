@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using Model;
+﻿using Model;
 
 namespace Controller
 {
@@ -19,8 +11,6 @@ namespace Controller
         public static void Initialize()
         {
             _competition = new Competition();
-            _competition.Participants = new List<iParticipant>();
-            _competition.Tracks = new Queue<Track>();
 
             AddParticipant();
             AddTracks();
@@ -42,7 +32,7 @@ namespace Controller
             deelnemer.Name = "Charles Leclerc";
             _competition.Participants.Add(deelnemer3);
         }
-        
+
         public static void AddTracks()
         {
             Track baan = new Track();
@@ -60,7 +50,7 @@ namespace Controller
 
         public static void NextRace()
         {
-            if (_competition.Tracks.Count > 0)
+            if (_competition.NextTrack != null)
             {
                 CurrentRace = new Race(_competition.NextTrack(), _competition.Participants);
             }
