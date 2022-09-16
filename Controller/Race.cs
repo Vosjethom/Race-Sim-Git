@@ -10,9 +10,11 @@ namespace Controller
 {
     public class Race
     {
+
         public Race(Track baan, List<iParticipant> deelnemer)
         {
-
+            Track = baan;
+            Participants = deelnemer;
         }
 
         public Track Track { get; set; }

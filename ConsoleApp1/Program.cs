@@ -9,8 +9,10 @@ namespace Tasker_Race_Sim
         static void Main(string[] args)
         {
             Data.Initialize();
-            //Data.NextRace();
-            Console.WriteLine($"naam van de baan: {Data.CurrentRace}");
+
+            Data.NextRace();
+
+            Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
 
             for (; ; )
             {

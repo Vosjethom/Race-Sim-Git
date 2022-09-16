@@ -19,11 +19,11 @@ namespace Model
 
     public enum TeamColors
     {
-            Red = 0,
-            Green = 1, 
-            Yellow = 2,
-            Grey = 3,
-            Blue = 4,
+            Red,
+            Green, 
+            Yellow,
+            Grey,
+            Blue,
         
     }
 }
