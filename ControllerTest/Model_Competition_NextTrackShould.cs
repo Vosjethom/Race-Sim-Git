@@ -3,11 +3,9 @@ using NUnit.Framework.Internal;
 
 namespace ControllerTest
 {
-
     [TestFixture]
     internal class Model_Competition_NextTrackShould
     {
-
         private Competition _competition;
 
         [SetUp]
@@ -19,8 +17,49 @@ namespace ControllerTest
         [Test]
         public void NextTrack_EmptyQueue_ReturnNull()
         {
-            var result = _competition.NextTrack();
+            Track result = _competition.NextTrack();
             Assert.IsNull(result);
+        }
+
+        [Test]
+        public void NextTrack_OneInQueue_ReturnTrack()
+        {
+            Track baan = new Track();
+            _competition.Tracks.Enqueue(baan);
+
+            Track result = _competition.NextTrack();
+            Assert.AreEqual(baan, result);
+        }
+
+        [Test]
+        public void NextTrack_OneInQueue_RemoveTrackFromQueue()
+        {
+            Track baan = new Track();
+            _competition.Tracks.Enqueue(baan);
+
+            Track result1 = _competition.NextTrack();
+            Assert.IsNotNull(result1);
+
+            Track result2 = _competition.NextTrack();
+            Assert.IsNull(result2);
+        }
+
+        [Test]
+        public void NextTrack_TwoInQueue_ReturnNextTrack()
+        {
+            Track baan1 = new Track();
+            baan1.Name = "test1";
+            _competition.Tracks.Enqueue(baan1);
+
+            Track baan2 = new Track();
+            baan2.Name = "test2";
+            _competition.Tracks.Enqueue(baan2);
+
+            Track result1Track = _competition.Tracks.First();
+            Assert.AreEqual(baan1, result1Track);
+
+            Track result2Track = _competition.NextTrack();
+            Assert.AreEqual(baan2.Name, result2Track.Name);
         }
     }
 }
