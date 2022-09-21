@@ -34,14 +34,14 @@ namespace Controller
 
         public static void AddTracks()
         {
-            Track baan = new Track("Zandvoort");
-            _competition.Tracks.Enqueue(baan);
+            //Track baan = new Track("Zandvoort");
+            //_competition.Tracks.Enqueue(baan);
 
-            Track baan2 = new Track("Silverstone");
-            _competition.Tracks.Enqueue(baan2);
+            //Track baan2 = new Track("Silverstone");
+            //_competition.Tracks.Enqueue(baan2);
 
-            Track baan3 = new Track("Monaco");
-            _competition.Tracks.Enqueue(baan3);
+            //Track baan3 = new Track("Monaco");
+            //_competition.Tracks.Enqueue(baan3);
         }
 
         public static void NextRace()

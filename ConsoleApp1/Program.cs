@@ -8,17 +8,19 @@ namespace Tasker_Race_Sim
         {
             Data.Initialize();
 
-            Data.NextRace();
+            //Data.NextRace();
 
-            Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
+            //Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
 
-            Data.NextRace();
+            //Data.NextRace();
 
-            Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
+            //Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
 
-            Data.NextRace();
+            //Data.NextRace();
 
-            Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
+            //Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
+
+            Visualization.DrawTrack(/*Data.CurrentRace.Track*/);
 
             for (; ; )
             {

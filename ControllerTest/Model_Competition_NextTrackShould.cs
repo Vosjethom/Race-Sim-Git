@@ -22,42 +22,42 @@ namespace ControllerTest
         }
 
         [Test]
-        public void NextTrack_OneInQueue_ReturnTrack()
-        {
-            Track baan = new Track("test");
-            _competition.Tracks.Enqueue(baan);
+        //public void NextTrack_OneInQueue_ReturnTrack()
+        //{
+        //    Track baan = new Track("test");
+        //    _competition.Tracks.Enqueue(baan);
 
-            Track result = _competition.NextTrack();
-            Assert.AreEqual(baan, result);
-        }
-
-        [Test]
-        public void NextTrack_OneInQueue_RemoveTrackFromQueue()
-        {
-            Track baan = new Track("test");
-            _competition.Tracks.Enqueue(baan);
-
-            Track result1 = _competition.NextTrack();
-            Assert.IsNotNull(result1);
-
-            Track result2 = _competition.NextTrack();
-            Assert.IsNull(result2);
-        }
+        //    Track result = _competition.NextTrack();
+        //    Assert.AreEqual(baan, result);
+        //}
 
         [Test]
-        public void NextTrack_TwoInQueue_ReturnNextTrack()
-        {
-            Track baan1 = new Track("test1");
-            _competition.Tracks.Enqueue(baan1);
+        //public void NextTrack_OneInQueue_RemoveTrackFromQueue()
+        //{
+        //    Track baan = new Track("test");
+        //    _competition.Tracks.Enqueue(baan);
 
-            Track baan2 = new Track("test2");
-            _competition.Tracks.Enqueue(baan2);
+        //    Track result1 = _competition.NextTrack();
+        //    Assert.IsNotNull(result1);
 
-            Track result1Track = _competition.NextTrack();
-            Assert.AreEqual(baan1, result1Track);
+        //    Track result2 = _competition.NextTrack();
+        //    Assert.IsNull(result2);
+        //}
 
-            Track result2Track = _competition.NextTrack();
-            Assert.AreEqual(baan2.Name, result2Track.Name);
-        }
+        [Test]
+        //public void NextTrack_TwoInQueue_ReturnNextTrack()
+        //{
+        //    Track baan1 = new Track("test1");
+        //    _competition.Tracks.Enqueue(baan1);
+
+        //    Track baan2 = new Track("test2");
+        //    _competition.Tracks.Enqueue(baan2);
+
+        //    Track result1Track = _competition.NextTrack();
+        //    Assert.AreEqual(baan1, result1Track);
+
+        //    Track result2Track = _competition.NextTrack();
+        //    Assert.AreEqual(baan2.Name, result2Track.Name);
+        //}
     }
 }
