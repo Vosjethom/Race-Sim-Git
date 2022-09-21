@@ -15,7 +15,6 @@ namespace Controller
             AddParticipant();
             AddTracks();
 
-            CurrentRace = new Race(_competition.Tracks.First(), _competition.Participants);
         }
 
         public static void AddParticipant()
@@ -35,16 +34,13 @@ namespace Controller
 
         public static void AddTracks()
         {
-            Track baan = new Track();
-            baan.Name = "Zandvoort";
+            Track baan = new Track("Zandvoort");
             _competition.Tracks.Enqueue(baan);
 
-            Track baan2 = new Track();
-            baan.Name = "Silverstone";
+            Track baan2 = new Track("Silverstone");
             _competition.Tracks.Enqueue(baan2);
 
-            Track baan3 = new Track();
-            baan.Name = "Monaco";
+            Track baan3 = new Track("Monaco");
             _competition.Tracks.Enqueue(baan3);
         }
 

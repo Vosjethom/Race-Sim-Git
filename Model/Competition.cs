@@ -13,7 +13,7 @@
             Participants = new List<iParticipant>();
         }
 
-        public Track? NextTrack()
+        public Track NextTrack()
         {
             if (Tracks.Count > 0)
             {
