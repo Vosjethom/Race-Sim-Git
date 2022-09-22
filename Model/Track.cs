@@ -24,8 +24,5 @@
             }
             return _sections;
         }
-
-
-
     }
 }

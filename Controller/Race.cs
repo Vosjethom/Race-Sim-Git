@@ -9,6 +9,7 @@ namespace Controller
         {
             Track = baan;
             Participants = deelnemer;
+            StartGrid(baan, deelnemer);
         }
 
         public Track Track { get; set; }
@@ -48,6 +49,24 @@ namespace Controller
                 equipment.Quality = _random.Next(101);
                 equipment.Performance = _random.Next(101);
 
+            }
+        }
+
+        public void StartGrid(Track baan, List<iParticipant> deelnemers)
+        {
+            SectionData sector = GetSectionData();
+            for (int i = 0; i < deelnemers.Count; i++)
+            {
+                if (i % 2 > 0)
+                {
+                    iParticipant participant = deelnemers[i];
+                    sector.Left = participant;
+                }
+                else
+                {
+                    iParticipant participant = deelnemers[i];
+                    sector.Right = participant;
+                }
             }
         }
     }

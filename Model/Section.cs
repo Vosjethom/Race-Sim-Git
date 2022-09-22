@@ -7,10 +7,15 @@
 
     public enum SectionTypes
     {
-        Straight,
-        LeftCorner,
-        RightCorner,
-        StartGrid,
-        Finish,
+
+        _finishHorizontaal,
+        _finishVerticaal,
+        _straigthHorizontaal,
+        _straigthVerticaal,
+        _turnDownUpLinks,
+        _turnUpDownLinks,
+        _turnDownUpRechts,
+        _turnUpDownRechts
+
     }
 }

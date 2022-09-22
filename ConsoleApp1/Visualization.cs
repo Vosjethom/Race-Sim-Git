@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Model;
+﻿using Model;
 
 namespace Tasker_Race_Sim
 {
@@ -11,77 +6,46 @@ namespace Tasker_Race_Sim
     {
         public static void Initialize()
         {
-
+            Console.SetCursorPosition(0, 1);
+            Console.BackgroundColor = ConsoleColor.Blue;
         }
 
-        public static void DrawTrack(/*Track baan*/)
+        public static void DrawTrack(Track baan)
         {
-            foreach (var VARIABLE in _finishHorizontaal)
+            for (int i = 0; i < 7; i++)
             {
-                Console.WriteLine(VARIABLE);
+                Console.Write(_turnDownUpRechts[i]);
+                Console.Write(_finishHorizontaal[i]);
+                Console.Write(_turnDownUpLinks[i] + "\n");
             }
 
-            Console.WriteLine("===============");
-
-            foreach (var VARIABLE in _finishVerticaal)
+            for (int i = 0; i < 7; i++)
             {
-                Console.WriteLine(VARIABLE);
+                Console.Write(_straigthVerticaal[i] + "\n");
+                Console.SetCursorPosition(18, 7 + i);
+                Console.Write(_straigthVerticaal[i] + "\n");
             }
 
-            Console.WriteLine("===============");
-
-            foreach (var VARIABLE in _straigthHorizontaal)
+            for (int i = 0; i < 7; i++)
             {
-                Console.WriteLine(VARIABLE);
-            }
-
-            Console.WriteLine("===============");
-
-            foreach (var VARIABLE in _straigthVerticaal)
-            {
-                Console.WriteLine(VARIABLE);
-            }
-
-            Console.WriteLine("===============");
-
-            foreach (var VARIABLE in _turnDownUpLinks)
-            {
-                Console.WriteLine(VARIABLE);
-            }
-
-            Console.WriteLine("===============");
-
-            foreach (var VARIABLE in _turnUpDownLinks)
-            {
-                Console.WriteLine(VARIABLE);
-            }
-
-            Console.WriteLine("===============");
-
-            foreach (var VARIABLE in _turnDownUpRechts)
-            {
-                Console.WriteLine(VARIABLE);
-            }
-
-            Console.WriteLine("===============");
-
-            foreach (var VARIABLE in _turnUpDownRechts)
-            {
-                Console.WriteLine(VARIABLE);
+                Console.Write(_turnUpDownLinks[i]);
+                Console.Write(_straigthHorizontaal[i]);
+                Console.Write(_turnUpDownRechts[i] + "\n");
             }
         }
 
         #region graphics
 
-        private static string[] _finishHorizontaal = { "       ", "-------",  " # #   ", "       ", "  # #  ", "-------", "       " };
-        private static string[] _finishVerticaal = { "|     |", "|     |", "|   # |", "| #   |", "|   # |", "| #   |", "|     |" };
-        private static string[] _straigthHorizontaal = { "       ", "-------", "       ", "       ", "       ", "-------", "       " };
-        private static string[] _straigthVerticaal = { "|     |", "|     |", "|     |", "|     |", "|     |", "|     |", "|     |" };
-        private static string[] _turnDownUpLinks = { "       ", "-----\\ ", "     | ", "     | ", "     | ", "-\\   | ", " |   | "};
-        private static string[] _turnUpDownLinks = { " |   | ", " |   \\-", " |     ", " |     ", " |     ", " \\-----", "       " };
-        private static string[] _turnDownUpRechts = { "       ", " /-----", " |     ", " |      ", " |     ", " |   /-", " |   | " };
-        private static string[] _turnUpDownRechts = { " |   | ", "-/   | ", "     | ", "     | ", "     | ", "-----/ ", "       " };
+        private static string[] _finishHorizontaal = { "         ", "---------", " #       ", " #       ", " #       ", "---------", "         " };
+        private static string[] _finishVerticaal = { " |     | ", " |#####| ", " |     | ", " |     | ", " |     | ", " |     | ", " |     | " };
+        private static string[] _straigthHorizontaal = { "         ", "---------", "         ", "         ", "         ", "---------", "         " };
+        private static string[] _straigthVerticaal = { " |     | ", " |     | ", " |     | ", " |     | ", " |     | ", " |     | ", " |     | " };
+        private static string[] _turnDownUpLinks = { "         ", "-------\\ ", "       | ", "       | ", "       | ", "-\\     | ", " |     | " };
+        private static string[] _turnUpDownLinks = { " |     | ", " |     \\-", " |       ", " |       ", " |       ", " \\-------", "         " };
+        private static string[] _turnDownUpRechts = { "         ", " /-------", " |       ", " |       ", " |       ", " |     /-", " |     | " };
+        private static string[] _turnUpDownRechts = { " |     | ", "-/     | ", "       | ", "       | ", "       | ", "-------/ ", "         " };
 
         #endregion
+
     }
 }
