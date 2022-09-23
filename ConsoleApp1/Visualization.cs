@@ -12,25 +12,66 @@ namespace Tasker_Race_Sim
 
         public static void DrawTrack(Track baan)
         {
-            for (int i = 0; i < 7; i++)
+            foreach (var sector in baan.Sections)
             {
-                Console.Write(_turnDownUpRechts[i]);
-                Console.Write(_finishHorizontaal[i]);
-                Console.Write(_turnDownUpLinks[i] + "\n");
-            }
+                switch (sector.SectionType)
+                {
+                    case SectionTypes._finishHorizontaal:
+                        foreach (string section1 in _finishHorizontaal)
+                        {
+                            Console.WriteLine(section1);
+                        }
+                        break;
 
-            for (int i = 0; i < 7; i++)
-            {
-                Console.Write(_straigthVerticaal[i] + "\n");
-                Console.SetCursorPosition(18, 7 + i);
-                Console.Write(_straigthVerticaal[i] + "\n");
-            }
+                    case SectionTypes._finishVerticaal:
+                        foreach (var section2 in _finishVerticaal)
+                        {
+                            Console.WriteLine(section2);
+                        }
+                        break;
 
-            for (int i = 0; i < 7; i++)
-            {
-                Console.Write(_turnUpDownLinks[i]);
-                Console.Write(_straigthHorizontaal[i]);
-                Console.Write(_turnUpDownRechts[i] + "\n");
+                    case SectionTypes._straigthHorizontaal:
+                        foreach (var section3 in _straigthHorizontaal)
+                        {
+                            Console.WriteLine(section3);
+                        }
+                        break;
+
+                    case SectionTypes._straigthVerticaal:
+                        foreach (var section4 in _straigthVerticaal)
+                        {
+                            Console.WriteLine(section4);
+                        }
+                        break;
+
+                    case SectionTypes._turnDownUpLinks:
+                        foreach (var section5 in _turnDownUpLinks)
+                        {
+                            Console.WriteLine(section5);
+                        }
+                        break;
+
+                    case SectionTypes._turnUpDownLinks:
+                        foreach (var section6 in _turnUpDownLinks)
+                        {
+                            Console.WriteLine(section6);
+                        }
+                        break;
+
+                    case SectionTypes._turnDownUpRechts:
+                        foreach (var section7 in _turnDownUpRechts)
+                        {
+                            Console.WriteLine(section7);
+                        }
+                        break;
+
+                    case SectionTypes._turnUpDownRechts:
+                        foreach (var section8 in _turnUpDownRechts)
+                        {
+                            Console.WriteLine(section8);
+                        }
+                        break;
+                }
             }
         }
 

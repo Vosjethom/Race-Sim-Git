@@ -19,7 +19,7 @@
 
             foreach (SectionTypes sectionType in sectionTypes)
             {
-                Section sector = new Section();
+                Section sector = new Section(sectionType);
                 _sections.AddLast(sector);
             }
             return _sections;

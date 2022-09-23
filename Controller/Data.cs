@@ -34,7 +34,7 @@ namespace Controller
 
         public static void AddTracks()
         {
-            Track baan = new Track("Zandvoort", new SectionTypes[5]);
+            Track baan = new Track("Zandvoort", new[] { SectionTypes._finishHorizontaal, SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownRechts, SectionTypes._finishHorizontaal, SectionTypes._finishVerticaal });
             _competition.Tracks.Enqueue(baan);
 
             Track baan2 = new Track("Silverstone", new SectionTypes[6]);
