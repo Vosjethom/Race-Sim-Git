@@ -75,16 +75,24 @@ namespace Tasker_Race_Sim
             }
         }
 
+        public static string PlaatsDeelnemer(string sectie, iParticipant replace1, iParticipant replace2)
+        {
+            sectie.Replace("1", replace1.Name.Substring(0,1));
+            sectie.Replace("2", replace2.Name.Substring(0,1));
+
+            return sectie;
+        }
+
         #region graphics
 
-        private static string[] _finishHorizontaal = { "         ", "---------", " #       ", " #       ", " #       ", "---------", "         " };
-        private static string[] _finishVerticaal = { " |     | ", " |#####| ", " |     | ", " |     | ", " |     | ", " |     | ", " |     | " };
-        private static string[] _straigthHorizontaal = { "         ", "---------", "         ", "         ", "         ", "---------", "         " };
-        private static string[] _straigthVerticaal = { " |     | ", " |     | ", " |     | ", " |     | ", " |     | ", " |     | ", " |     | " };
-        private static string[] _turnDownUpLinks = { "         ", "-------\\ ", "       | ", "       | ", "       | ", "-\\     | ", " |     | " };
-        private static string[] _turnUpDownLinks = { " |     | ", " |     \\-", " |       ", " |       ", " |       ", " \\-------", "         " };
-        private static string[] _turnDownUpRechts = { "         ", " /-------", " |       ", " |       ", " |       ", " |     /-", " |     | " };
-        private static string[] _turnUpDownRechts = { " |     | ", "-/     | ", "       | ", "       | ", "       | ", "-------/ ", "         " };
+        private static string[] _finishHorizontaal = { "         ", "---------", " # 1     ", " #       ", " #  2    ", "---------", "         " };
+        private static string[] _finishVerticaal = { " |     | ", " |#####| ", " | 1   | ", " |     | ", " |   2 | ", " |     | ", " |     | " };
+        private static string[] _straigthHorizontaal = { "         ", "---------", " 1       ", "         ", "  2      ", "---------", "         " };
+        private static string[] _straigthVerticaal = { " |     | ", " | 1   | ", " |     | ", " |     | ", " |   2 | ", " |     | ", " |     | " };
+        private static string[] _turnDownUpLinks = { "         ", "-------\\ ", "  1    | ", "       | ", "     2 | ", "-\\     | ", " |     | " };
+        private static string[] _turnUpDownLinks = { " |     | ", " |     \\-", " |    1  ", " |       ", " |    2  ", " \\-------", "         " };
+        private static string[] _turnDownUpRechts = { "         ", " /-------", " |    1  ", " |       ", " |    2  ", " |     /-", " |     | " };
+        private static string[] _turnUpDownRechts = { " |     | ", "-/     | ", " 1     | ", "       | ", " 2     | ", "-------/ ", "         " };
 
         #endregion
 

@@ -24,11 +24,11 @@ namespace Controller
             _competition.Participants.Add(deelnemer);
 
             iParticipant deelnemer2 = new Driver();
-            deelnemer.Name = "Lewis Hamilton";
+            deelnemer2.Name = "Lewis Hamilton";
             _competition.Participants.Add(deelnemer2);
 
             iParticipant deelnemer3 = new Driver();
-            deelnemer.Name = "Charles Leclerc";
+            deelnemer3.Name = "Charles Leclerc";
             _competition.Participants.Add(deelnemer3);
         }
 
