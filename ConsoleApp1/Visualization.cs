@@ -6,9 +6,15 @@ namespace Tasker_Race_Sim
     {
         public static void Initialize()
         {
+            Console.SetWindowSize(150, 150);
             Console.SetCursorPosition(0, 1);
             Console.BackgroundColor = ConsoleColor.Blue;
         }
+
+        private static int coordinaatX = 50;
+        private static int coordinaatY = 50;
+
+        private static int direction;
 
         public static void DrawTrack(Track baan)
         {
@@ -17,58 +23,180 @@ namespace Tasker_Race_Sim
                 switch (sector.SectionType)
                 {
                     case SectionTypes._finishHorizontaal:
+                        Console.SetCursorPosition(coordinaatX, coordinaatY++);
                         foreach (string section1 in _finishHorizontaal)
                         {
-                            Console.WriteLine(section1);
+                            Console.Write(section1);
+                            Console.SetCursorPosition(coordinaatX, coordinaatY++);
                         }
+                        coordinaatX -= 7;
+                        coordinaatY -= 8;
+                        direction = 4;
                         break;
 
                     case SectionTypes._finishVerticaal:
+                        Console.SetCursorPosition(coordinaatX, coordinaatY++);
                         foreach (var section2 in _finishVerticaal)
                         {
-                            Console.WriteLine(section2);
+                            Console.Write(section2);
+                            Console.SetCursorPosition(coordinaatX, coordinaatY++);
                         }
+                        coordinaatY -= 8;
+                        direction = 1;
                         break;
 
                     case SectionTypes._straigthHorizontaal:
-                        foreach (var section3 in _straigthHorizontaal)
+                        Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                        if (direction == 2)
                         {
-                            Console.WriteLine(section3);
+                            foreach (var section3 in _straigthHorizontaal)
+                            {
+                                Console.Write(section3);
+                                Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                            }
+                            coordinaatX += 7;
+                            coordinaatY -= 8;
+                            direction = 2;
+                        }
+
+                        if (direction == 4)
+                        {
+                            foreach (var section3 in _straigthHorizontaal)
+                            {
+                                Console.Write(section3);
+                                Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                            }
+                            coordinaatX -= 7;
+                            coordinaatY -= 8;
+                            direction = 4;
                         }
                         break;
 
                     case SectionTypes._straigthVerticaal:
-                        foreach (var section4 in _straigthVerticaal)
+                        Console.SetCursorPosition(coordinaatX, coordinaatY);
+                        if (direction == 1)
                         {
-                            Console.WriteLine(section4);
+                            foreach (var section3 in _straigthVerticaal)
+                            {
+                                Console.Write(section3);
+                                Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                            }
+                            coordinaatY += 8;
+                            direction = 1;
+                        }
+
+                        if (direction == 3)
+                        {
+                            foreach (var section3 in _straigthVerticaal)
+                            {
+                                Console.Write(section3);
+                                Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                            }
+                            coordinaatY++;
+                            direction = 3;
                         }
                         break;
 
                     case SectionTypes._turnDownUpLinks:
-                        foreach (var section5 in _turnDownUpLinks)
+                        Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                        if (direction == 1)
                         {
-                            Console.WriteLine(section5);
+                            foreach (var section5 in _turnDownUpLinks)
+                            {
+                                Console.Write(section5);
+                                Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                            }
+                            coordinaatX -= 7;
+                            coordinaatY -= 8;
+                            direction = 4;
+                        }
+
+                        if (direction == 2)
+                        {
+                            foreach (var section5 in _turnDownUpLinks)
+                            {
+                                Console.Write(section5);
+                                Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                            }
+                            coordinaatY--;
+                            direction = 3;
                         }
                         break;
 
                     case SectionTypes._turnUpDownLinks:
-                        foreach (var section6 in _turnUpDownLinks)
+                        Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                        if (direction == 3)
                         {
-                            Console.WriteLine(section6);
+                            foreach (var section6 in _turnUpDownLinks)
+                            {
+                                Console.Write(section6);
+                                Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                            }
+                            coordinaatY -= 8;
+                            direction = 2;
+                        }
+
+                        if (direction == 4)
+                        {
+                            foreach (var section6 in _turnUpDownLinks)
+                            {
+                                Console.Write(section6);
+                                Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                            }
+                            coordinaatY -= 15;
+                            direction = 1;
                         }
                         break;
 
                     case SectionTypes._turnDownUpRechts:
-                        foreach (var section7 in _turnDownUpRechts)
+                        Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                        if (direction == 1)
                         {
-                            Console.WriteLine(section7);
+                            foreach (var section7 in _turnDownUpRechts)
+                            {
+                                Console.Write(section7);
+                                Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                            }
+                            coordinaatX += 7;
+                            coordinaatY -= 8;
+                            direction = 2;
+                        }
+
+                        if (direction == 4)
+                        {
+                            foreach (var section7 in _turnDownUpRechts)
+                            {
+                                Console.Write(section7);
+                                Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                            }
+                            coordinaatY++;
+                            direction = 3;
                         }
                         break;
 
                     case SectionTypes._turnUpDownRechts:
-                        foreach (var section8 in _turnUpDownRechts)
+                        Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                        if (direction == 2)
                         {
-                            Console.WriteLine(section8);
+                            foreach (var section8 in _turnUpDownRechts)
+                            {
+                                Console.Write(section8);
+                                Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                            }
+                            coordinaatY -= 15;
+                            direction = 1;
+                        }
+
+                        if (direction == 3)
+                        {
+                            foreach (var section8 in _turnUpDownRechts)
+                            {
+                                Console.Write(section8);
+                                Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                            }
+                            coordinaatX -= 7;
+                            coordinaatY -= 8;
+                            direction = 4;
                         }
                         break;
                 }
@@ -77,22 +205,22 @@ namespace Tasker_Race_Sim
 
         public static string PlaatsDeelnemer(string sectie, iParticipant replace1, iParticipant replace2)
         {
-            sectie.Replace("1", replace1.Name.Substring(0,1));
-            sectie.Replace("2", replace2.Name.Substring(0,1));
+            sectie.Replace("1", replace1.Name.Substring(0, 1));
+            sectie.Replace("2", replace2.Name.Substring(0, 1));
 
             return sectie;
         }
 
         #region graphics
 
-        private static string[] _finishHorizontaal = { "         ", "---------", " # 1     ", " #       ", " #  2    ", "---------", "         " };
-        private static string[] _finishVerticaal = { " |     | ", " |#####| ", " | 1   | ", " |     | ", " |   2 | ", " |     | ", " |     | " };
-        private static string[] _straigthHorizontaal = { "         ", "---------", " 1       ", "         ", "  2      ", "---------", "         " };
-        private static string[] _straigthVerticaal = { " |     | ", " | 1   | ", " |     | ", " |     | ", " |   2 | ", " |     | ", " |     | " };
-        private static string[] _turnDownUpLinks = { "         ", "-------\\ ", "  1    | ", "       | ", "     2 | ", "-\\     | ", " |     | " };
-        private static string[] _turnUpDownLinks = { " |     | ", " |     \\-", " |    1  ", " |       ", " |    2  ", " \\-------", "         " };
-        private static string[] _turnDownUpRechts = { "         ", " /-------", " |    1  ", " |       ", " |    2  ", " |     /-", " |     | " };
-        private static string[] _turnUpDownRechts = { " |     | ", "-/     | ", " 1     | ", "       | ", " 2     | ", "-------/ ", "         " };
+        private static string[] _finishHorizontaal = { "       ", "-------", " # 1   ", " #     ", " #  2  ", "-------", "       " };
+        private static string[] _finishVerticaal = { " |   | ", " |###| ", " |1  | ", " |   | ", " |  2| ", " |   | ", " |   | " };
+        private static string[] _straigthHorizontaal = { "       ", "-------", " 1     ", "       ", "  2    ", "-------", "       " };
+        private static string[] _straigthVerticaal = { " |   | ", " |1  | ", " |   | ", " |   | ", " |  2| ", " |   | ", " |   | " };
+        private static string[] _turnDownUpLinks = { "       ", "-----\\ ", "  1  | ", "     | ", "    2| ", "-\\   | ", " |   | " };
+        private static string[] _turnUpDownLinks = { " |   | ", " |   \\-", " |  1  ", " |     ", " |2    ", " \\-----", "       " };
+        private static string[] _turnDownUpRechts = { "       ", " /-----", " | 1   ", " |     ", " |   2 ", " |   /-", " |   | " };
+        private static string[] _turnUpDownRechts = { " |   | ", "-/   | ", " 1   | ", "     | ", "   2 | ", "-----/ ", "       " };
 
         #endregion
 

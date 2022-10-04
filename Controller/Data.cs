@@ -34,7 +34,16 @@ namespace Controller
 
         public static void AddTracks()
         {
-            Track baan = new Track("Zandvoort", new[] { SectionTypes._finishHorizontaal, SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownRechts, SectionTypes._finishHorizontaal, SectionTypes._finishVerticaal });
+            Track baan = new Track("Zandvoort", new[] { SectionTypes._finishHorizontaal, SectionTypes._straigthHorizontaal,                        //2
+                SectionTypes._turnUpDownLinks, SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownLinks, SectionTypes._turnDownUpRechts,                    //6
+                SectionTypes._straigthHorizontaal, SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownLinks,                //10
+                SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownLinks, SectionTypes._turnDownUpRechts, SectionTypes._straigthHorizontaal,                //14
+                SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpRechts, SectionTypes._straigthHorizontaal, SectionTypes._straigthHorizontaal,           //18
+                SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownRechts, SectionTypes._straigthHorizontaal, SectionTypes._turnDownUpRechts,               //22
+                SectionTypes._straigthVerticaal, SectionTypes._turnUpDownLinks,/* SectionTypes._straigthHorizontaal, SectionTypes._turnUpDownRechts,*/              //26
+                //SectionTypes._turnDownUpRechts, SectionTypes._turnDownUpLinks, SectionTypes._straigthVerticaal, SectionTypes._straigthVerticaal,                //30
+                //SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpRechts, SectionTypes._turnUpDownRechts, SectionTypes._straigthHorizontaal               //34
+                });
             _competition.Tracks.Enqueue(baan);
 
             Track baan2 = new Track("Silverstone", new SectionTypes[6]);

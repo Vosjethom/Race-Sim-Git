@@ -1,5 +1,4 @@
 ﻿using Controller;
-using Model;
 
 namespace Tasker_Race_Sim
 {
@@ -25,10 +24,8 @@ namespace Tasker_Race_Sim
 
             Visualization.DrawTrack(Data.CurrentRace.Track);
 
-            
-
-            Console.WriteLine(Visualization.PlaatsDeelnemer("qwerty 1 qwerty 2", Data._competition.Participants[0],
-                Data._competition.Participants[1]));
+            Visualization.PlaatsDeelnemer("qwerty 1 qwerty 2", Data._competition.Participants[0],
+                Data._competition.Participants[1]);
 
 
             for (; ; )
