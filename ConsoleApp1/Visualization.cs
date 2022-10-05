@@ -206,9 +206,24 @@ namespace Tasker_Race_Sim
 
         public static string PlaatsDeelnemer(string sectie, iParticipant replace1, iParticipant replace2)
         {
+            //if (sectie.Contains('1') && sectie.Contains('2'))
+            //{
+            //    string newSectie3 = sectie.Replace("1", replace1.Name.Substring(0, 1));
+            //    string newSectie4 = newSectie3.Replace("2", replace2.Name.Substring(0, 1));
+            //    return newSectie4;
+            //}
 
-            sectie.Replace("1", replace1.Name.Substring(0, 1));
-            sectie.Replace("2", replace2.Name.Substring(0, 1));
+            if (sectie.Contains('1'))
+            {
+                string newSectie1 = sectie.Replace("1", replace1.Name.Substring(0, 1));
+                return newSectie1;
+            }
+
+            if (sectie.Contains('2'))
+            {
+                string newSectie2 = sectie.Replace("1", replace2.Name.Substring(0, 1));
+                return newSectie2;
+            }
 
             return sectie;
         }

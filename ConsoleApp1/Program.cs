@@ -9,34 +9,37 @@ namespace Tasker_Race_Sim
 
             #region Episode 1
 
-            Data.Initialize();
+            //Data.Initialize();
 
-            Data.NextRace();
+            //Data.NextRace();
 
-            Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
+            //Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
 
-            Data.NextRace();
+            //Data.NextRace();
 
-            Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
+            //Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
 
-            Data.NextRace();
+            //Data.NextRace();
 
-            Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
+            //Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
 
             #endregion
 
             #region Episode 2
 
-            //Data.Initialize();
+            Data.Initialize();
 
-            //Visualization.Initialize();
+            Visualization.Initialize();
 
-            //Data.NextRace();
+            Data.NextRace();
 
-            //Visualization.DrawTrack(Data.CurrentRace.Track);
+            Visualization.DrawTrack(Data.CurrentRace.Track);
 
-            //Visualization.PlaatsDeelnemer("qwerty 1 qwerty 2", Data._competition.Participants[0],
-            //    Data._competition.Participants[1]);
+            Console.WriteLine(Data._competition.Participants[0].Name + "test");
+
+            Console.WriteLine(Visualization.PlaatsDeelnemer("1234", Data._competition.Participants[0],
+                Data._competition.Participants[1]));
+
 
             #endregion
 
