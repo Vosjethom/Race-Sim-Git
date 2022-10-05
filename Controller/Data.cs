@@ -58,6 +58,7 @@ namespace Controller
             if (_competition.NextTrack != null)
             {
                 CurrentRace = new Race(_competition.NextTrack(), _competition.Participants);
+                Console.Clear();
             }
         }
     }

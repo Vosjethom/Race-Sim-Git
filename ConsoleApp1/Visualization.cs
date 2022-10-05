@@ -1,4 +1,6 @@
-﻿using Model;
+﻿using Controller;
+using Model;
+using static System.Collections.Specialized.BitVector32;
 
 namespace Tasker_Race_Sim
 {
@@ -26,7 +28,7 @@ namespace Tasker_Race_Sim
                         Console.SetCursorPosition(coordinaatX, coordinaatY++);
                         foreach (string section1 in _finishHorizontaal)
                         {
-                            Console.Write(section1);
+                            Console.Write(PlaatsDeelnemer(section1, Data._competition.Participants[0], Data._competition.Participants[1]));
                             Console.SetCursorPosition(coordinaatX, coordinaatY++);
                         }
                         coordinaatX -= 7;
@@ -38,7 +40,7 @@ namespace Tasker_Race_Sim
                         Console.SetCursorPosition(coordinaatX, coordinaatY++);
                         foreach (var section2 in _finishVerticaal)
                         {
-                            Console.Write(section2);
+                            Console.Write(PlaatsDeelnemer(section2, Data._competition.Participants[0], Data._competition.Participants[1]));
                             Console.SetCursorPosition(coordinaatX, coordinaatY++);
                         }
                         coordinaatY -= 8;
@@ -51,7 +53,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section3 in _straigthHorizontaal)
                             {
-                                Console.Write(section3);
+                                Console.Write(PlaatsDeelnemer(section3, Data._competition.Participants[0], Data._competition.Participants[1]));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatX += 7;
@@ -63,7 +65,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section3 in _straigthHorizontaal)
                             {
-                                Console.Write(section3);
+                                Console.Write(PlaatsDeelnemer(section3, Data._competition.Participants[0], Data._competition.Participants[1]));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatX -= 7;
@@ -76,9 +78,9 @@ namespace Tasker_Race_Sim
                         Console.SetCursorPosition(coordinaatX, coordinaatY++);
                         if (direction == 1)
                         {
-                            foreach (var section3 in _straigthVerticaal)
+                            foreach (var section4 in _straigthVerticaal)
                             {
-                                Console.Write(section3);
+                                Console.Write(PlaatsDeelnemer(section4, Data._competition.Participants[0], Data._competition.Participants[1]));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatY += 8;
@@ -87,9 +89,9 @@ namespace Tasker_Race_Sim
 
                         if (direction == 3)
                         {
-                            foreach (var section3 in _straigthVerticaal)
+                            foreach (var section4 in _straigthVerticaal)
                             {
-                                Console.Write(section3);
+                                Console.Write(PlaatsDeelnemer(section4, Data._competition.Participants[0], Data._competition.Participants[1]));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatY--;
@@ -103,7 +105,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section5 in _turnDownUpLinks)
                             {
-                                Console.Write(section5);
+                                Console.Write(PlaatsDeelnemer(section5, Data._competition.Participants[0], Data._competition.Participants[1]));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatX -= 7;
@@ -115,7 +117,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section5 in _turnDownUpLinks)
                             {
-                                Console.Write(section5);
+                                Console.Write(PlaatsDeelnemer(section5, Data._competition.Participants[0], Data._competition.Participants[1]));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatY--;
@@ -129,7 +131,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section6 in _turnUpDownLinks)
                             {
-                                Console.Write(section6);
+                                Console.Write(PlaatsDeelnemer(section6, Data._competition.Participants[0], Data._competition.Participants[1]));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatX += 7;
@@ -141,7 +143,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section6 in _turnUpDownLinks)
                             {
-                                Console.Write(section6);
+                                Console.Write(PlaatsDeelnemer(section6, Data._competition.Participants[0], Data._competition.Participants[1]));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatY -= 15;
@@ -155,7 +157,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section7 in _turnDownUpRechts)
                             {
-                                Console.Write(section7);
+                                Console.Write(PlaatsDeelnemer(section7, Data._competition.Participants[0], Data._competition.Participants[1]));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatX += 7;
@@ -167,7 +169,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section7 in _turnDownUpRechts)
                             {
-                                Console.Write(section7);
+                                Console.Write(PlaatsDeelnemer(section7, Data._competition.Participants[0], Data._competition.Participants[1]));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatY--;
@@ -181,7 +183,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section8 in _turnUpDownRechts)
                             {
-                                Console.Write(section8);
+                                Console.Write(PlaatsDeelnemer(section8, Data._competition.Participants[0], Data._competition.Participants[1]));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatY -= 15;
@@ -192,7 +194,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section8 in _turnUpDownRechts)
                             {
-                                Console.Write(section8);
+                                Console.Write(PlaatsDeelnemer(section8, Data._competition.Participants[0], Data._competition.Participants[1]));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatX -= 7;
@@ -213,15 +215,15 @@ namespace Tasker_Race_Sim
             //    return newSectie4;
             //}
 
-            if (sectie.Contains('1'))
+            if (sectie.Contains("1"))
             {
                 string newSectie1 = sectie.Replace("1", replace1.Name.Substring(0, 1));
                 return newSectie1;
             }
 
-            if (sectie.Contains('2'))
+            if (sectie.Contains("2"))
             {
-                string newSectie2 = sectie.Replace("1", replace2.Name.Substring(0, 1));
+                string newSectie2 = sectie.Replace("2", replace2.Name.Substring(0, 1));
                 return newSectie2;
             }
 

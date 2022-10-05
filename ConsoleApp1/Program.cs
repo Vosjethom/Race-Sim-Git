@@ -35,12 +35,6 @@ namespace Tasker_Race_Sim
 
             Visualization.DrawTrack(Data.CurrentRace.Track);
 
-            Console.WriteLine(Data._competition.Participants[0].Name + "test");
-
-            Console.WriteLine(Visualization.PlaatsDeelnemer("1234", Data._competition.Participants[0],
-                Data._competition.Participants[1]));
-
-
             #endregion
 
 

@@ -1,4 +1,6 @@
 ﻿using Model;
+using System.Timers;
+using Timer = System.Threading.Timer;
 
 namespace Controller
 {
@@ -21,6 +23,8 @@ namespace Controller
         private Random _random;
 
         private Dictionary<Section, SectionData> _positions;
+
+        private Timer _timer;
 
         public SectionData GetSectionData(Section sector)
         {
