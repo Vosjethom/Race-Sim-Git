@@ -6,26 +6,41 @@ namespace Tasker_Race_Sim
     {
         static void Main(string[] args)
         {
+
+            #region Episode 1
+
             Data.Initialize();
 
             Data.NextRace();
 
             Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
 
+            Data.NextRace();
+
+            Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
+
+            Data.NextRace();
+
+            Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
+
+            #endregion
+
+            #region Episode 2
+
+            //Data.Initialize();
+
+            //Visualization.Initialize();
+
             //Data.NextRace();
 
-            //Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
+            //Visualization.DrawTrack(Data.CurrentRace.Track);
 
-            //Data.NextRace();
+            //Visualization.PlaatsDeelnemer("qwerty 1 qwerty 2", Data._competition.Participants[0],
+            //    Data._competition.Participants[1]);
 
-            //Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
+            #endregion
 
-            Visualization.Initialize();
 
-            Visualization.DrawTrack(Data.CurrentRace.Track);
-
-            Visualization.PlaatsDeelnemer("qwerty 1 qwerty 2", Data._competition.Participants[0],
-                Data._competition.Participants[1]);
 
 
             for (; ; )

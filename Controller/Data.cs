@@ -40,9 +40,9 @@ namespace Controller
                 SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownLinks, SectionTypes._turnDownUpRechts, SectionTypes._straigthHorizontaal,                //14
                 SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpRechts, SectionTypes._straigthHorizontaal, SectionTypes._straigthHorizontaal,           //18
                 SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownRechts, SectionTypes._straigthHorizontaal, SectionTypes._turnDownUpRechts,               //22
-                SectionTypes._straigthVerticaal, SectionTypes._turnUpDownLinks,/* SectionTypes._straigthHorizontaal, SectionTypes._turnUpDownRechts,*/              //26
-                //SectionTypes._turnDownUpRechts, SectionTypes._turnDownUpLinks, SectionTypes._straigthVerticaal, SectionTypes._straigthVerticaal,                //30
-                //SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpRechts, SectionTypes._turnUpDownRechts, SectionTypes._straigthHorizontaal               //34
+                SectionTypes._straigthVerticaal, SectionTypes._turnUpDownLinks, SectionTypes._straigthHorizontaal, SectionTypes._turnUpDownRechts,              //26
+                SectionTypes._turnDownUpRechts, SectionTypes._turnDownUpLinks, SectionTypes._straigthVerticaal, SectionTypes._straigthVerticaal,                //30
+                SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpRechts, SectionTypes._turnUpDownRechts, SectionTypes._straigthHorizontaal               //34
                 });
             _competition.Tracks.Enqueue(baan);
 

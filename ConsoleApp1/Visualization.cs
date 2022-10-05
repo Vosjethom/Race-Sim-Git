@@ -6,7 +6,7 @@ namespace Tasker_Race_Sim
     {
         public static void Initialize()
         {
-            Console.SetWindowSize(150, 150);
+            //Console.SetWindowSize(100, 100);
             Console.SetCursorPosition(0, 1);
             Console.BackgroundColor = ConsoleColor.Blue;
         }
@@ -73,7 +73,7 @@ namespace Tasker_Race_Sim
                         break;
 
                     case SectionTypes._straigthVerticaal:
-                        Console.SetCursorPosition(coordinaatX, coordinaatY);
+                        Console.SetCursorPosition(coordinaatX, coordinaatY++);
                         if (direction == 1)
                         {
                             foreach (var section3 in _straigthVerticaal)
@@ -92,7 +92,7 @@ namespace Tasker_Race_Sim
                                 Console.Write(section3);
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
-                            coordinaatY++;
+                            coordinaatY--;
                             direction = 3;
                         }
                         break;
@@ -132,6 +132,7 @@ namespace Tasker_Race_Sim
                                 Console.Write(section6);
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
+                            coordinaatX += 7;
                             coordinaatY -= 8;
                             direction = 2;
                         }
@@ -169,7 +170,7 @@ namespace Tasker_Race_Sim
                                 Console.Write(section7);
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
-                            coordinaatY++;
+                            coordinaatY--;
                             direction = 3;
                         }
                         break;
@@ -205,6 +206,7 @@ namespace Tasker_Race_Sim
 
         public static string PlaatsDeelnemer(string sectie, iParticipant replace1, iParticipant replace2)
         {
+
             sectie.Replace("1", replace1.Name.Substring(0, 1));
             sectie.Replace("2", replace2.Name.Substring(0, 1));
 
