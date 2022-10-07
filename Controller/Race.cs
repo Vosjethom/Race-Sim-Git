@@ -1,17 +1,29 @@
 ﻿using Model;
 using System.Timers;
-using Timer = System.Threading.Timer;
+using Timer = System.Timers.Timer;
 
 namespace Controller
 {
     public class Race
     {
-
         public Race(Track baan, List<iParticipant> deelnemer)
         {
             Track = baan;
             Participants = deelnemer;
             StartGrid(baan, deelnemer);
+            _timer = new Timer();
+            _timer.Interval = 500;
+            _timer.Elapsed += OnTimedEvent;
+        }
+
+        private void OnTimedEvent(object? sender, ElapsedEventArgs e)
+        {
+
+        }
+
+        private void Start()
+        {
+            _timer.Start();
         }
 
         public Track Track { get; set; }

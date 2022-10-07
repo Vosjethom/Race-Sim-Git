@@ -1,11 +1,12 @@
 ﻿using Controller;
 using Model;
-using static System.Collections.Specialized.BitVector32;
 
 namespace Tasker_Race_Sim
 {
     public static class Visualization
     {
+        public delegate void DriversChanged(object sender, DriversChangedEventArgs e);
+
         public static void Initialize()
         {
             //Console.SetWindowSize(100, 100);
@@ -242,6 +243,5 @@ namespace Tasker_Race_Sim
         private static string[] _turnUpDownRechts = { " |   | ", "-/   | ", " 1   | ", "     | ", "   2 | ", "-----/ ", "       " };
 
         #endregion
-
     }
 }

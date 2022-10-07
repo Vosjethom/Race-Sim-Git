@@ -21,7 +21,7 @@ namespace ControllerTest
             Assert.IsNull(result);
         }
 
-        [Test]
+        //[Test]
         //public void NextTrack_OneInQueue_ReturnTrack()
         //{
         //    Track baan = new Track("test");
@@ -31,7 +31,7 @@ namespace ControllerTest
         //    Assert.AreEqual(baan, result);
         //}
 
-        [Test]
+        //[Test]
         //public void NextTrack_OneInQueue_RemoveTrackFromQueue()
         //{
         //    Track baan = new Track("test");
@@ -44,7 +44,7 @@ namespace ControllerTest
         //    Assert.IsNull(result2);
         //}
 
-        [Test]
+        //[Test]
         //public void NextTrack_TwoInQueue_ReturnNextTrack()
         //{
         //    Track baan1 = new Track("test1");
