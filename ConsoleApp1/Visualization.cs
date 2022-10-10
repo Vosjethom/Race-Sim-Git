@@ -5,7 +5,7 @@ namespace Tasker_Race_Sim
 {
     public static class Visualization
     {
-        public delegate void DriversChanged(object sender, DriversChangedEventArgs e);
+        public delegate void DriversChanged(Track baan);
 
         public static void Initialize()
         {
@@ -205,6 +205,8 @@ namespace Tasker_Race_Sim
                         break;
                 }
             }
+            coordinaatX = 50;
+            coordinaatY = 50;
         }
 
         public static string PlaatsDeelnemer(string sectie, iParticipant replace1, iParticipant replace2)
@@ -230,6 +232,14 @@ namespace Tasker_Race_Sim
 
             return sectie;
         }
+        
+
+        //public static void EventHandlerDriversChanged(DriversChangedEventArgs driversChanged)
+        //{
+        //    DrawTrack(driversChanged.Baan);
+        //}
+
+        
 
         #region graphics
 

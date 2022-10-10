@@ -1,9 +1,27 @@
-﻿namespace Model
+﻿using System.Dynamic;
+
+namespace Model
 {
+    public delegate void DriversChanged(Track baanTrack);
+
     public class DriversChangedEventArgs : EventArgs
     {
-        private Track baan;
+        private Track _baan;
 
-        public delegate void DriversChanged(object sender, DriversChangedEventArgs e);
+        public Track Baan
+        {
+            get { return _baan; }
+            set
+            {
+                if (!(Baan.Equals(_baan)))
+                {
+                    DriversChangedEvent?.Invoke(Baan);
+                }
+            }
+        }
+
+        
+
+        public event DriversChanged DriversChangedEvent;
     }
 }

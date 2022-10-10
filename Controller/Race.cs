@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using System.Reflection;
+using Model;
 using System.Timers;
 using Timer = System.Timers.Timer;
 
@@ -6,6 +7,7 @@ namespace Controller
 {
     public class Race
     {
+        public delegate void TimedEvent(object? sender, ElapsedEventArgs e);
         public Race(Track baan, List<iParticipant> deelnemer)
         {
             Track = baan;
@@ -14,11 +16,12 @@ namespace Controller
             _timer = new Timer();
             _timer.Interval = 500;
             _timer.Elapsed += OnTimedEvent;
+            Start();
         }
 
-        private void OnTimedEvent(object? sender, ElapsedEventArgs e)
+        private void OnTimedEvent(object? sender, ElapsedEventArgs elapsedInterval)
         {
-
+            DriversChangedEvent?.Invoke(_timer, elapsedInterval);
         }
 
         private void Start()
@@ -85,5 +88,6 @@ namespace Controller
                 }
             }
         }
+        public event TimedEvent DriversChangedEvent;
     }
 }
