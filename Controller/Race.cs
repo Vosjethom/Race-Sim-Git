@@ -5,9 +5,9 @@ using Timer = System.Timers.Timer;
 
 namespace Controller
 {
+    public delegate void TimedEvent(object? sender, ElapsedEventArgs e);
     public class Race
     {
-        public delegate void TimedEvent(object? sender, ElapsedEventArgs e);
         public Race(Track baan, List<iParticipant> deelnemer)
         {
             Track = baan;
@@ -50,14 +50,9 @@ namespace Controller
             else
             {
                 SectionData _sectionData = new SectionData();
+                _positions.Add(sector, _sectionData);
                 return _sectionData;
             }
-        }
-
-        public SectionData GetSectionData()
-        {
-            SectionData _sectionData = new SectionData();
-            return _sectionData;
         }
 
         public void RandomizeEquipment()

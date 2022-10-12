@@ -12,10 +12,12 @@ namespace Tasker_Race_Sim
             //Console.SetWindowSize(100, 100);
             Console.SetCursorPosition(0, 1);
             Console.BackgroundColor = ConsoleColor.Blue;
+            Race race = Data.CurrentRace;
         }
 
         private static int coordinaatX = 50;
         private static int coordinaatY = 50;
+        private static Race _race;
 
         private static int direction;
 
@@ -209,14 +211,22 @@ namespace Tasker_Race_Sim
             coordinaatY = 50;
         }
 
-        public static string PlaatsDeelnemer(string sectie, iParticipant replace1, iParticipant replace2)
+        public static string PlaatsDeelnemer(string sectie, iParticipant replace1, iParticipant replace2, Section section)
         {
-            //if (sectie.Contains('1') && sectie.Contains('2'))
-            //{
-            //    string newSectie3 = sectie.Replace("1", replace1.Name.Substring(0, 1));
-            //    string newSectie4 = newSectie3.Replace("2", replace2.Name.Substring(0, 1));
-            //    return newSectie4;
-            //}
+
+            if (direction == 1 || direction == 3)
+            {
+                1 == links
+                3 == rechts
+            }
+
+            Data.CurrentRace.GetSectionData(section);
+
+            if (direction == 2 || direction == 4)
+            {
+                2 == rechts
+                4 == links
+            }
 
             if (sectie.Contains("1"))
             {
@@ -232,14 +242,11 @@ namespace Tasker_Race_Sim
 
             return sectie;
         }
-        
 
         //public static void EventHandlerDriversChanged(DriversChangedEventArgs driversChanged)
         //{
         //    DrawTrack(driversChanged.Baan);
         //}
-
-        
 
         #region graphics
 
