@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using Model;
+﻿using Model;
 using System.Timers;
 using Timer = System.Timers.Timer;
 
@@ -8,11 +7,11 @@ namespace Controller
     public delegate void TimedEvent(object? sender, ElapsedEventArgs e);
     public class Race
     {
-        public Race(Track baan, List<iParticipant> deelnemer)
+        public Race(Track baan, List<iParticipant> deelnemers)
         {
             Track = baan;
-            Participants = deelnemer;
-            StartGrid(baan, deelnemer);
+            Participants = deelnemers;
+            StartGrid(baan, deelnemers);
             _timer = new Timer();
             _timer.Interval = 500;
             _timer.Elapsed += OnTimedEvent;
@@ -37,15 +36,15 @@ namespace Controller
 
         private Random _random;
 
-        private Dictionary<Section, SectionData> _positions;
+        private Dictionary<Section, SectionData> _positions { get; set; }
 
         private Timer _timer;
 
         public SectionData GetSectionData(Section sector)
         {
-            if (_positions.TryGetValue(sector, out var sectionData))
+            if (_positions.ContainsValue(_positions[sector]))
             {
-                return sectionData;
+                return _positions[sector];
             }
             else
             {
@@ -68,7 +67,7 @@ namespace Controller
 
         public void StartGrid(Track baan, List<iParticipant> deelnemers)
         {
-            SectionData sector = GetSectionData();
+            SectionData sector = new SectionData();
             for (int i = 0; i < deelnemers.Count; i++)
             {
                 if (i % 2 > 0)

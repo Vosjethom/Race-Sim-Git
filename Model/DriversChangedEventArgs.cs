@@ -1,6 +1,4 @@
-﻿using System.Dynamic;
-
-namespace Model
+﻿namespace Model
 {
     public delegate void DriversChanged(Track baanTrack);
 
@@ -20,7 +18,7 @@ namespace Model
             }
         }
 
-        
+
 
         public event DriversChanged DriversChangedEvent;
     }

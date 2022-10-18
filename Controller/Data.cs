@@ -42,7 +42,7 @@ namespace Controller
                 SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownRechts, SectionTypes._straigthHorizontaal, SectionTypes._turnDownUpRechts,               //22
                 SectionTypes._straigthVerticaal, SectionTypes._turnUpDownLinks, SectionTypes._straigthHorizontaal, SectionTypes._turnUpDownRechts,              //26
                 SectionTypes._turnDownUpRechts, SectionTypes._turnDownUpLinks, SectionTypes._straigthVerticaal, SectionTypes._straigthVerticaal,                //30
-                SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpRechts, SectionTypes._turnUpDownRechts, SectionTypes._straigthHorizontaal               //34
+                SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpRechts, SectionTypes._turnUpDownRechts, SectionTypes._startGridHorizontaal              //34
                 });
             _competition.Tracks.Enqueue(baan);
 

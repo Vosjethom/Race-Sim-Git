@@ -13,7 +13,8 @@
 
     public enum SectionTypes
     {
-
+        _startGridHorizontaal,
+        _startGridVerticaal,
         _finishHorizontaal,
         _finishVerticaal,
         _straigthHorizontaal,

@@ -1,5 +1,4 @@
 ﻿using Controller;
-using Model;
 
 namespace Tasker_Race_Sim
 {
