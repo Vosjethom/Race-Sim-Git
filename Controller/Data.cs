@@ -27,14 +27,14 @@ namespace Controller
             deelnemer2.Name = "Lewis Hamilton";
             _competition.Participants.Add(deelnemer2);
 
-            iParticipant deelnemer3 = new Driver();
-            deelnemer3.Name = "Charles Leclerc";
-            _competition.Participants.Add(deelnemer3);
+            //iParticipant deelnemer3 = new Driver();
+            //deelnemer3.Name = "Charles Leclerc";
+            //_competition.Participants.Add(deelnemer3);
         }
 
         public static void AddTracks()
         {
-            Track baan = new Track("Zandvoort", new[] { SectionTypes._finishHorizontaal, SectionTypes._straigthHorizontaal,                        //2
+            Track baan = new Track("Zandvoort", new[] {  SectionTypes._startGridHorizontaal, SectionTypes._finishHorizontaal, SectionTypes._straigthHorizontaal,                        //2
                 SectionTypes._turnUpDownLinks, SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownLinks, SectionTypes._turnDownUpRechts,                    //6
                 SectionTypes._straigthHorizontaal, SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownLinks,                //10
                 SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownLinks, SectionTypes._turnDownUpRechts, SectionTypes._straigthHorizontaal,                //14
@@ -42,7 +42,7 @@ namespace Controller
                 SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownRechts, SectionTypes._straigthHorizontaal, SectionTypes._turnDownUpRechts,               //22
                 SectionTypes._straigthVerticaal, SectionTypes._turnUpDownLinks, SectionTypes._straigthHorizontaal, SectionTypes._turnUpDownRechts,              //26
                 SectionTypes._turnDownUpRechts, SectionTypes._turnDownUpLinks, SectionTypes._straigthVerticaal, SectionTypes._straigthVerticaal,                //30
-                SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpRechts, SectionTypes._turnUpDownRechts, SectionTypes._startGridHorizontaal              //34
+                SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpRechts, SectionTypes._turnUpDownRechts              //34
                 });
             _competition.Tracks.Enqueue(baan);
 
@@ -58,7 +58,7 @@ namespace Controller
             if (_competition.NextTrack != null)
             {
                 CurrentRace = new Race(_competition.NextTrack(), _competition.Participants);
-                Console.Clear();
+                //Console.Clear();
             }
         }
     }

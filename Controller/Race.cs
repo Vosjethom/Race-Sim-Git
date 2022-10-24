@@ -1,7 +1,6 @@
 ﻿using Model;
 using System.Timers;
 using Timer = System.Timers.Timer;
-
 namespace Controller
 {
     public delegate void TimedEvent(object? sender, ElapsedEventArgs e);
@@ -11,38 +10,31 @@ namespace Controller
         {
             Track = baan;
             Participants = deelnemers;
+            _positions = new Dictionary<Section, SectionData>();
             StartGrid(baan, deelnemers);
             _timer = new Timer();
             _timer.Interval = 500;
             _timer.Elapsed += OnTimedEvent;
             Start();
         }
-
         private void OnTimedEvent(object? sender, ElapsedEventArgs elapsedInterval)
         {
             DriversChangedEvent?.Invoke(_timer, elapsedInterval);
         }
-
         private void Start()
         {
             _timer.Start();
         }
-
         public Track Track { get; set; }
-
         public List<iParticipant> Participants { get; set; }
-
         public DateTime StartTime { get; set; }
-
         private Random _random;
-
         private Dictionary<Section, SectionData> _positions { get; set; }
-
         private Timer _timer;
 
         public SectionData GetSectionData(Section sector)
         {
-            if (_positions.ContainsValue(_positions[sector]))
+            if (_positions.ContainsKey(sector))
             {
                 return _positions[sector];
             }
@@ -53,7 +45,6 @@ namespace Controller
                 return _sectionData;
             }
         }
-
         public void RandomizeEquipment()
         {
             for (int i = 0; i < Participants.Count; i++)
@@ -61,26 +52,27 @@ namespace Controller
                 iEquipment equipment = Participants[i];
                 equipment.Quality = _random.Next(101);
                 equipment.Performance = _random.Next(101);
-
             }
         }
-
         public void StartGrid(Track baan, List<iParticipant> deelnemers)
         {
+            Section section = baan.Sections.First.Value;
             SectionData sector = new SectionData();
+
             for (int i = 0; i < deelnemers.Count; i++)
             {
                 if (i % 2 > 0)
                 {
                     iParticipant participant = deelnemers[i];
-                    sector.Left = participant;
+                    sector.Right = participant;
                 }
                 else
                 {
                     iParticipant participant = deelnemers[i];
-                    sector.Right = participant;
+                    sector.Left = participant;
                 }
             }
+            _positions.Add(section, sector);
         }
         public event TimedEvent DriversChangedEvent;
     }
