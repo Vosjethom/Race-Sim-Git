@@ -27,28 +27,28 @@ namespace Tasker_Race_Sim
 
             #region Episode 2
 
-            Data.Initialize();
-
-            Data.NextRace();
-
-            Visualization.Initialize(Data.CurrentRace);
-
-            Visualization.DrawTrack(Data.CurrentRace.Track);
-
-            #endregion
-
-            #region Episode 3
-
             //Data.Initialize();
 
             //Data.NextRace();
 
             //Visualization.Initialize(Data.CurrentRace);
 
-            //Data.CurrentRace.DriversChangedEvent += (sender, e) =>
-            //{
-            //    Visualization.DrawTrack(Data.CurrentRace.Track);
-            //};
+            //Visualization.DrawTrack(Data.CurrentRace.Track);
+
+            #endregion
+
+            #region Episode 3
+
+            Data.Initialize();
+
+            Data.NextRace();
+
+            Visualization.Initialize(Data.CurrentRace);
+
+            Data.CurrentRace.DriversChangedEvent += (sender, e) =>
+            {
+                Visualization.DrawTrack(Data.CurrentRace.track);
+            };
 
             #endregion
 

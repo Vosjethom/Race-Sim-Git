@@ -4,12 +4,12 @@ namespace Tasker_Race_Sim
 {
     public static class Visualization
     {
-        public delegate void DriversChanged(Track baan);
+        //public delegate void DriversChanged(Track baan);
         public static void Initialize(Race race)
         {
             //Console.SetWindowSize(100, 100);
             Console.SetCursorPosition(0, 1);
-            Console.BackgroundColor = ConsoleColor.Blue;
+            //Console.BackgroundColor = ConsoleColor.Blue;
             _race = race;
         }
 
@@ -258,21 +258,33 @@ namespace Tasker_Race_Sim
                 }
             }
 
-            else if (replace1 == null)
-            {
-                if (sectie.Contains("2"))
-                {
-                    string newSectie2 = sectie.Replace("2", " ");
-                    return newSectie2;
-                }
-            }
-
-            else if (replace2 == null)
+            else if (replace1 == null && replace2 != null)
             {
                 if (sectie.Contains("1"))
                 {
                     string newSectie1 = sectie.Replace("1", " ");
                     return newSectie1;
+                }
+
+                if (sectie.Contains("2"))
+                {
+                    string newSectie2 = sectie.Replace("2", replace2.Name.Substring(0, 1));
+                    return newSectie2;
+                }
+            }
+
+            else if (replace1 != null && replace2 == null)
+            {
+                if (sectie.Contains("1"))
+                {
+                    string newSectie1 = sectie.Replace("1", replace1.Name.Substring(0, 1));
+                    return newSectie1;
+                }
+
+                if (sectie.Contains("2"))
+                {
+                    string newSectie2 = sectie.Replace("2", " ");
+                    return newSectie2;
                 }
             }
 
