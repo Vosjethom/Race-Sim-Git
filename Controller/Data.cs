@@ -27,22 +27,22 @@ namespace Controller
             deelnemer2.Name = "Lewis Hamilton";
             _competition.Participants.Add(deelnemer2);
 
-            //iParticipant deelnemer3 = new Driver();
-            //deelnemer3.Name = "Charles Leclerc";
-            //_competition.Participants.Add(deelnemer3);
+            iParticipant deelnemer3 = new Driver();
+            deelnemer3.Name = "Charles Leclerc";
+            _competition.Participants.Add(deelnemer3);
+
+            iParticipant deelnemer4 = new Driver();
+            deelnemer4.Name = "Sergio Perez";
+            _competition.Participants.Add(deelnemer4);
         }
 
         public static void AddTracks()
         {
-            Track baan = new Track("Zandvoort", new[] {  SectionTypes._startGridHorizontaal, SectionTypes._finishHorizontaal,
-                SectionTypes._straigthHorizontaal, SectionTypes._turnUpDownLinks, SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownLinks,
-                SectionTypes._turnDownUpRechts, SectionTypes._straigthHorizontaal, SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpLinks,
-                SectionTypes._turnUpDownLinks, SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownLinks, SectionTypes._turnDownUpRechts,
-                SectionTypes._straigthHorizontaal, SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpRechts, SectionTypes._straigthHorizontaal,
-                SectionTypes._straigthHorizontaal, SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownRechts, SectionTypes._straigthHorizontaal,
-                SectionTypes._turnDownUpRechts, SectionTypes._straigthVerticaal, SectionTypes._turnUpDownLinks, SectionTypes._straigthHorizontaal,
-                SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpRechts, SectionTypes._turnDownUpLinks, SectionTypes._straigthVerticaal,
-                SectionTypes._straigthVerticaal, SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpRechts, SectionTypes._turnUpDownRechts
+            Track baan = new Track("Zandvoort", new[] {  SectionTypes._startGridHorizontaal, SectionTypes._startGridHorizontaal, SectionTypes._finishHorizontaal,
+                SectionTypes._turnDownUpRechts, SectionTypes._turnUpDownLinks, SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownRechts,
+                SectionTypes._turnDownUpRechts, SectionTypes._turnUpDownLinks, SectionTypes._straigthHorizontaal, SectionTypes._straigthHorizontaal,
+                SectionTypes._straigthHorizontaal, SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownLinks,
+                SectionTypes._turnDownUpRechts, SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpLinks
                 });
             _competition.Tracks.Enqueue(baan);
 

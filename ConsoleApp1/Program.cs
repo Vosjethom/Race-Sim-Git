@@ -13,15 +13,15 @@ namespace Tasker_Race_Sim
 
             //Data.NextRace();
 
-            //Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
+            //Console.WriteLine($"naam van de baan: {Data.CurrentRace.track.Name}");
 
             //Data.NextRace();
 
-            //Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
+            //Console.WriteLine($"naam van de baan: {Data.CurrentRace.track.Name}");
 
             //Data.NextRace();
 
-            //Console.WriteLine($"naam van de baan: {Data.CurrentRace.Track.Name}");
+            //Console.WriteLine($"naam van de baan: {Data.CurrentRace.track.Name}");
 
             #endregion
 
@@ -33,7 +33,7 @@ namespace Tasker_Race_Sim
 
             //Visualization.Initialize(Data.CurrentRace);
 
-            //Visualization.DrawTrack(Data.CurrentRace.Track);
+            //Visualization.DrawTrack(Data.CurrentRace.track);
 
             #endregion
 

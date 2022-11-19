@@ -7,7 +7,7 @@ namespace Tasker_Race_Sim
         //public delegate void DriversChanged(Track baan);
         public static void Initialize(Race race)
         {
-            //Console.SetWindowSize(100, 100);
+            Console.SetWindowSize(100, 100);
             Console.SetCursorPosition(0, 1);
             //Console.BackgroundColor = ConsoleColor.Blue;
             _race = race;
@@ -15,7 +15,7 @@ namespace Tasker_Race_Sim
 
         private static Race _race;
         private static int coordinaatX = 50;
-        private static int coordinaatY = 50;
+        private static int coordinaatY = 1;
         private static int direction;
         public static void DrawTrack(Track baan)
         {
@@ -25,7 +25,7 @@ namespace Tasker_Race_Sim
                 {
                     case SectionTypes._startGridHorizontaal:
                         direction = 4;
-                        Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                        Console.SetCursorPosition(coordinaatX, coordinaatY);
 
                         foreach (string section in _startGridHorizontaal)
                         {
@@ -33,25 +33,25 @@ namespace Tasker_Race_Sim
                             Console.SetCursorPosition(coordinaatX, coordinaatY++);
                         }
                         coordinaatX -= 7;
-                        coordinaatY -= 8;
+                        coordinaatY -= 7;
                         direction = 4;
                         break;
 
                     case SectionTypes._startGridVerticaal:
                         direction = 1;
-                        Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                        Console.SetCursorPosition(coordinaatX, coordinaatY);
 
                         foreach (string section in _startGridHorizontaal)
                         {
                             Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
                             Console.SetCursorPosition(coordinaatX, coordinaatY++);
                         }
-                        coordinaatY -= 8;
+                        coordinaatY -= 7;
                         direction = 1;
                         break;
 
                     case SectionTypes._finishHorizontaal:
-                        Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                        Console.SetCursorPosition(coordinaatX, coordinaatY);
 
                         foreach (string section in _finishHorizontaal)
                         {
@@ -59,24 +59,24 @@ namespace Tasker_Race_Sim
                             Console.SetCursorPosition(coordinaatX, coordinaatY++);
                         }
                         coordinaatX -= 7;
-                        coordinaatY -= 8;
+                        coordinaatY -= 7;
                         direction = 4;
                         break;
 
                     case SectionTypes._finishVerticaal:
-                        Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                        Console.SetCursorPosition(coordinaatX, coordinaatY);
 
                         foreach (var section in _finishVerticaal)
                         {
                             Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
                             Console.SetCursorPosition(coordinaatX, coordinaatY++);
                         }
-                        coordinaatY -= 8;
+                        coordinaatY -= 7;
                         direction = 1;
                         break;
 
                     case SectionTypes._straigthHorizontaal:
-                        Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                        Console.SetCursorPosition(coordinaatX, coordinaatY);
 
                         if (direction == 2)
                         {
@@ -86,7 +86,7 @@ namespace Tasker_Race_Sim
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatX += 7;
-                            coordinaatY -= 8;
+                            coordinaatY -= 7;
                             direction = 2;
                         }
 
@@ -98,13 +98,13 @@ namespace Tasker_Race_Sim
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatX -= 7;
-                            coordinaatY -= 8;
+                            coordinaatY -= 7;
                             direction = 4;
                         }
                         break;
 
                     case SectionTypes._straigthVerticaal:
-                        Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                        Console.SetCursorPosition(coordinaatX, coordinaatY);
 
                         if (direction == 1)
                         {
@@ -113,7 +113,7 @@ namespace Tasker_Race_Sim
                                 Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
-                            coordinaatY += 8;
+                            coordinaatY += 7;
                             direction = 1;
                         }
 
@@ -130,7 +130,7 @@ namespace Tasker_Race_Sim
                         break;
 
                     case SectionTypes._turnDownUpLinks:
-                        Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                        Console.SetCursorPosition(coordinaatX, coordinaatY);
 
                         if (direction == 1)
                         {
@@ -140,7 +140,7 @@ namespace Tasker_Race_Sim
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatX -= 7;
-                            coordinaatY -= 8;
+                            coordinaatY -= 7;
                             direction = 4;
                         }
 
@@ -157,7 +157,7 @@ namespace Tasker_Race_Sim
                         break;
 
                     case SectionTypes._turnUpDownLinks:
-                        Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                        Console.SetCursorPosition(coordinaatX, coordinaatY);
 
                         if (direction == 3)
                         {
@@ -167,7 +167,7 @@ namespace Tasker_Race_Sim
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatX += 7;
-                            coordinaatY -= 8;
+                            coordinaatY -= 7;
                             direction = 2;
                         }
 
@@ -178,13 +178,13 @@ namespace Tasker_Race_Sim
                                 Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
-                            coordinaatY -= 15;
+                            coordinaatY -= 13;
                             direction = 1;
                         }
                         break;
 
                     case SectionTypes._turnDownUpRechts:
-                        Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                        Console.SetCursorPosition(coordinaatX, coordinaatY);
 
                         if (direction == 1)
                         {
@@ -194,7 +194,7 @@ namespace Tasker_Race_Sim
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatX += 7;
-                            coordinaatY -= 8;
+                            coordinaatY -= 7;
                             direction = 2;
                         }
 
@@ -211,7 +211,7 @@ namespace Tasker_Race_Sim
                         break;
 
                     case SectionTypes._turnUpDownRechts:
-                        Console.SetCursorPosition(coordinaatX, coordinaatY++);
+                        Console.SetCursorPosition(coordinaatX, coordinaatY);
 
                         if (direction == 2)
                         {
@@ -220,7 +220,7 @@ namespace Tasker_Race_Sim
                                 Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
-                            coordinaatY -= 15;
+                            coordinaatY -= 13;
                             direction = 1;
                         }
 
@@ -232,7 +232,7 @@ namespace Tasker_Race_Sim
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatX -= 7;
-                            coordinaatY -= 8;
+                            coordinaatY -= 7;
                             direction = 4;
                         }
                         break;
