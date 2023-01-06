@@ -1,4 +1,6 @@
 ﻿using Controller;
+using Model;
+using System.Diagnostics;
 
 namespace Tasker_Race_Sim
 {
@@ -45,9 +47,11 @@ namespace Tasker_Race_Sim
 
             Visualization.Initialize(Data.CurrentRace);
 
-            Data.CurrentRace.DriversChangedEvent += (sender, e) =>
+            Visualization.DrawTrack(Data.CurrentRace.track);
+
+            Data.CurrentRace.DriversChanged += (sender, e) =>
             {
-                Visualization.DrawTrack(Data.CurrentRace.track);
+                Visualization.DrawTrack(e._baan);
             };
 
             #endregion

@@ -38,7 +38,7 @@ namespace Controller
 
         public static void AddTracks()
         {
-            Track baan = new Track("Zandvoort", new[] {  SectionTypes._startGridHorizontaal, SectionTypes._startGridHorizontaal, SectionTypes._finishHorizontaal,
+            Track baan = new Track("Zandvoort", new[] {  SectionTypes._finishHorizontaal, SectionTypes._startGridHorizontaal, SectionTypes._startGridHorizontaal,
                 SectionTypes._turnDownUpRechts, SectionTypes._turnUpDownLinks, SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownRechts,
                 SectionTypes._turnDownUpRechts, SectionTypes._turnUpDownLinks, SectionTypes._straigthHorizontaal, SectionTypes._straigthHorizontaal,
                 SectionTypes._straigthHorizontaal, SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpLinks, SectionTypes._turnUpDownLinks,
@@ -58,7 +58,7 @@ namespace Controller
             if (_competition.NextTrack != null)
             {
                 CurrentRace = new Race(_competition.NextTrack(), _competition.Participants);
-                //Console.Clear();
+                Console.Clear();
             }
         }
     }

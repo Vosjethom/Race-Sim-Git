@@ -7,20 +7,22 @@ namespace Tasker_Race_Sim
         //public delegate void DriversChanged(Track baan);
         public static void Initialize(Race race)
         {
-            Console.SetWindowSize(100, 100);
             Console.SetCursorPosition(0, 1);
             //Console.BackgroundColor = ConsoleColor.Blue;
             _race = race;
         }
 
         private static Race _race;
-        private static int coordinaatX = 50;
+        private static int coordinaatX = 25;
         private static int coordinaatY = 1;
         private static int direction;
         public static void DrawTrack(Track baan)
         {
             foreach (var sector in baan.Sections)
             {
+                iParticipant deelnemerLinks = _race.GetSectionData(sector).Left;
+                iParticipant deelnemerRechts = _race.GetSectionData(sector).Right;
+
                 switch (sector.SectionType)
                 {
                     case SectionTypes._startGridHorizontaal:
@@ -29,7 +31,7 @@ namespace Tasker_Race_Sim
 
                         foreach (string section in _startGridHorizontaal)
                         {
-                            Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
+                            Console.Write(VerplaatsDeelnemer(section, deelnemerLinks, deelnemerRechts));
                             Console.SetCursorPosition(coordinaatX, coordinaatY++);
                         }
                         coordinaatX -= 7;
@@ -43,7 +45,7 @@ namespace Tasker_Race_Sim
 
                         foreach (string section in _startGridHorizontaal)
                         {
-                            Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
+                            Console.Write(VerplaatsDeelnemer(section, deelnemerLinks, deelnemerRechts));
                             Console.SetCursorPosition(coordinaatX, coordinaatY++);
                         }
                         coordinaatY -= 7;
@@ -55,7 +57,7 @@ namespace Tasker_Race_Sim
 
                         foreach (string section in _finishHorizontaal)
                         {
-                            Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
+                            Console.Write(VerplaatsDeelnemer(section, deelnemerLinks, deelnemerRechts));
                             Console.SetCursorPosition(coordinaatX, coordinaatY++);
                         }
                         coordinaatX -= 7;
@@ -68,7 +70,7 @@ namespace Tasker_Race_Sim
 
                         foreach (var section in _finishVerticaal)
                         {
-                            Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
+                            Console.Write(VerplaatsDeelnemer(section, deelnemerLinks, deelnemerRechts));
                             Console.SetCursorPosition(coordinaatX, coordinaatY++);
                         }
                         coordinaatY -= 7;
@@ -82,7 +84,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section in _straigthHorizontaal)
                             {
-                                Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
+                                Console.Write(VerplaatsDeelnemer(section, deelnemerLinks, deelnemerRechts));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatX += 7;
@@ -94,7 +96,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section in _straigthHorizontaal)
                             {
-                                Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
+                                Console.Write(VerplaatsDeelnemer(section, deelnemerLinks, deelnemerRechts));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatX -= 7;
@@ -110,7 +112,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section in _straigthVerticaal)
                             {
-                                Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
+                                Console.Write(VerplaatsDeelnemer(section, deelnemerLinks, deelnemerRechts));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatY += 7;
@@ -121,7 +123,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section in _straigthVerticaal)
                             {
-                                Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
+                                Console.Write(VerplaatsDeelnemer(section, deelnemerLinks, deelnemerRechts));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatY--;
@@ -136,7 +138,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section in _turnDownUpLinks)
                             {
-                                Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
+                                Console.Write(VerplaatsDeelnemer(section, deelnemerLinks, deelnemerRechts));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatX -= 7;
@@ -148,7 +150,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section in _turnDownUpLinks)
                             {
-                                Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
+                                Console.Write(VerplaatsDeelnemer(section, deelnemerLinks, deelnemerRechts));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatY--;
@@ -163,7 +165,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section in _turnUpDownLinks)
                             {
-                                Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
+                                Console.Write(VerplaatsDeelnemer(section, deelnemerLinks, deelnemerRechts));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatX += 7;
@@ -175,7 +177,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section in _turnUpDownLinks)
                             {
-                                Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
+                                Console.Write(VerplaatsDeelnemer(section, deelnemerLinks, deelnemerRechts));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatY -= 13;
@@ -190,7 +192,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section in _turnDownUpRechts)
                             {
-                                Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
+                                Console.Write(VerplaatsDeelnemer(section, deelnemerLinks, deelnemerRechts));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatX += 7;
@@ -202,7 +204,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section in _turnDownUpRechts)
                             {
-                                Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
+                                Console.Write(VerplaatsDeelnemer(section, deelnemerLinks, deelnemerRechts));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatY--;
@@ -217,7 +219,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section in _turnUpDownRechts)
                             {
-                                Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
+                                Console.Write(VerplaatsDeelnemer(section, deelnemerLinks, deelnemerRechts));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatY -= 13;
@@ -228,7 +230,7 @@ namespace Tasker_Race_Sim
                         {
                             foreach (var section in _turnUpDownRechts)
                             {
-                                Console.Write(PlaatsDeelnemer(section, _race.GetSectionData(sector).Left, _race.GetSectionData(sector).Right));
+                                Console.Write(VerplaatsDeelnemer(section, deelnemerLinks, deelnemerRechts));
                                 Console.SetCursorPosition(coordinaatX, coordinaatY++);
                             }
                             coordinaatX -= 7;
@@ -238,11 +240,11 @@ namespace Tasker_Race_Sim
                         break;
                 }
             }
-            coordinaatX = 50;
-            coordinaatY = 50;
+            coordinaatX = 25;
+            coordinaatY = 1;
         }
 
-        public static string PlaatsDeelnemer(string sectie, iParticipant replace1, iParticipant replace2)
+        public static string VerplaatsDeelnemer(string sectie, iParticipant replace1, iParticipant replace2)
         {
             if (replace1 == null && replace2 == null)
             {

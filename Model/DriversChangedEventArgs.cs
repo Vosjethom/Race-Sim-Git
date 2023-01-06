@@ -3,9 +3,12 @@
 
     public class DriversChangedEventArgs : EventArgs
     {
-        private Track _baan;
+        public Track _baan { get; set; }
 
-        public Track Baan { get; set; }
+        public DriversChangedEventArgs(Track baan)
+        {
+           _baan = baan;
+        }
     }
 }
 
