@@ -54,6 +54,14 @@ namespace Tasker_Race_Sim
                 Visualization.DrawTrack(e._baan);
             };
 
+            Data.CurrentRace.NewRace += (sender, e) =>
+            {
+                Data.NextRace();
+                Visualization.Initialize(Data.CurrentRace);
+                Visualization.DrawTrack(Data.CurrentRace.track);
+                Debug.WriteLine("volgende circuit");
+            };
+
             #endregion
 
 

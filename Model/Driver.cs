@@ -11,6 +11,5 @@
         public int Speed { get; set; }
         public bool IsBroken { get; set; }
         public int LapCount { get; set; }
-        public bool Finished { get; set; }
     }
 }

@@ -4,13 +4,13 @@ namespace Controller
 {
     public static class Data
     {
-        public static Competition _competition { get; set; }
+        public static Competition _competition = new Competition();
 
         public static Race CurrentRace { get; set; }
 
         public static void Initialize()
         {
-            _competition = new Competition();
+            //_competition = new Competition();
 
             AddParticipant();
             AddTracks();
@@ -46,7 +46,9 @@ namespace Controller
                 });
             _competition.Tracks.Enqueue(baan);
 
-            Track baan2 = new Track("Silverstone", new SectionTypes[6]);
+            Track baan2 = new Track("Silverstone", new[] { SectionTypes._finishHorizontaal, SectionTypes._startGridHorizontaal, SectionTypes._startGridHorizontaal,
+            SectionTypes._turnDownUpRechts, SectionTypes._turnUpDownLinks, SectionTypes._straigthHorizontaal, SectionTypes._straigthHorizontaal, 
+            SectionTypes._straigthHorizontaal, SectionTypes._turnDownUpRechts, SectionTypes._turnUpDownRechts, SectionTypes._turnDownUpLinks});
             _competition.Tracks.Enqueue(baan2);
 
             Track baan3 = new Track("Monaco", new SectionTypes[4]);
