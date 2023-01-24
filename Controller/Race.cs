@@ -18,12 +18,10 @@ namespace Controller
         public Dictionary<Section, SectionData> _positions { get; set; }
         private Timer _timer { get; set; }
         public LinkedListNode<Section> huidigeSection { get; set; }
-        private int indexTimer { get; set; }
-        private int linksCheck { get; set; }
-        private int rechtsCheck { get; set; }
         public SectionData currentSectionData { get; set; }
         public SectionData nextSectionData { get; set; }
         private int _index { get; set; }
+        private int RaceLength { get; set; } = 1;
 
         public Race(Track baan, List<iParticipant> deelnemers)
         {
@@ -33,10 +31,7 @@ namespace Controller
             RandomizeEquipment();
             _positions = new Dictionary<Section, SectionData>();
             StartGrid(baan, deelnemers);
-            //huidigeSection = track.Sections.Last;
             _index = track.Sections.Count;
-
-            //currentSectionData = GetSectionData(track.Sections.Last.Value);
 
             foreach (Section section in track.Sections)
             {
@@ -55,9 +50,6 @@ namespace Controller
             DriversChanged?.Invoke(sender, new DriversChangedEventArgs(track));
 
             _index = track.Sections.Count;
-
-            indexTimer++;
-            Debug.WriteLine($"timerCount = '{indexTimer}'");
         }
 
         private void Start()
@@ -117,78 +109,100 @@ namespace Controller
             }
         }
 
-        public void SetSectionData(Section huidigeSection, Section nextSection, iParticipant deelnemerLinks, iParticipant deelnemerRechts)
+        public void SetSectionData(Section currentSection, Section nextSection, iParticipant deelnemerLinks, iParticipant deelnemerRechts)
         {
-            //Section volgendeSection;
-
-            //if (_index + 1 == track.Sections.Count)
-            //{
-            //    volgendeSection = track.Sections.ElementAt(0);
-            //}
-            //else
-            //{
-            //    volgendeSection = track.Sections.ElementAt(_index - 1);
-            //}
-
-            //SectionData volgendeSectionData = GetSectionData(volgendeSection);
-
-
-            if (_positions.ContainsKey(huidigeSection))
+            if (_positions.ContainsKey(currentSection))
             {
-                SectionData huidigeSectionData = _positions[huidigeSection];
+                SectionData currentSectionData = _positions[currentSection];
                 SectionData nextSectionData = _positions[nextSection];
-                _positions.Remove(huidigeSection);
+                _positions.Remove(currentSection);
                 _positions.Remove(nextSection);
 
-                if (huidigeSectionData.DistanceLeft > 100)
+                if (currentSectionData.DistanceLeft > 100)
                 {
                     if (nextSectionData.Left == null && nextSectionData.Right != null)
                     {
                         nextSectionData.Left = deelnemerLinks;
                         nextSectionData.DistanceLeft = 0;
                     }
-
-                    if (nextSectionData.Left != null && nextSectionData.Right == null)
+                    else if (nextSectionData.Left != null && nextSectionData.Right == null)
                     {
                         nextSectionData.Right = deelnemerLinks;
                         nextSectionData.DistanceRight = 0;
                     }
-
-                    if (nextSectionData.Left == null && nextSectionData.Right == null)
+                    else if (nextSectionData.Left == null && nextSectionData.Right == null)
                     {
                         nextSectionData.Left = deelnemerLinks;
                         nextSectionData.DistanceLeft = 0;
                     }
 
-                    huidigeSectionData.Left = null;
-                    huidigeSectionData.DistanceLeft = 0;
-                    _positions.Add(huidigeSection, huidigeSectionData);
+                    if (currentSection == track.Sections.First() && deelnemerLinks.LapCount == RaceLength)
+                    {
+                        deelnemerLinks.Finished = true;
+                        currentSectionData.Left = null;
+
+                        if (nextSectionData.Left == deelnemerLinks)
+                        {
+                            nextSectionData.Left = null;
+                        }
+                        else if (nextSectionData.Right == deelnemerLinks)
+                        {
+                            nextSectionData.Right = null;
+                        }
+                    }
+
+                    if (currentSection == track.Sections.ElementAt(0) && nextSection == track.Sections.ElementAt(1))
+                    {
+                        deelnemerLinks.LapCount++;
+                    }
+
+                    currentSectionData.Left = null;
+                    currentSectionData.DistanceLeft = 0;
+                    _positions.Add(currentSection, currentSectionData);
                     _positions.Add(nextSection, nextSectionData);
                 }
 
-                if (huidigeSectionData.DistanceRight > 100)
+                if (currentSectionData.DistanceRight > 100)
                 {
                     if (nextSectionData.Left == null && nextSectionData.Right != null)
                     {
                         nextSectionData.Left = deelnemerRechts;
                         nextSectionData.DistanceLeft = 0;
                     }
-
-                    if (nextSectionData.Left != null && nextSectionData.Right == null)
+                    else if (nextSectionData.Left != null && nextSectionData.Right == null)
                     {
                         nextSectionData.Right = deelnemerRechts;
                         nextSectionData.DistanceRight = 0;
                     }
-
-                    if (nextSectionData.Left == null && nextSectionData.Right == null)
+                    else if (nextSectionData.Left == null && nextSectionData.Right == null)
                     {
                         nextSectionData.Left = deelnemerRechts;
                         nextSectionData.DistanceLeft = 0;
                     }
+                    
+                    if (currentSection == track.Sections.First() && deelnemerRechts.LapCount == RaceLength)
+                    {
+                        deelnemerRechts.Finished = true;
+                        currentSectionData.Right = null;
 
-                    huidigeSectionData.Right = null;
-                    huidigeSectionData.DistanceRight = 0;
-                    _positions.Add(huidigeSection, huidigeSectionData);
+                        if (nextSectionData.Left == deelnemerLinks)
+                        {
+                            nextSectionData.Left = null;
+                        }
+                        else if (nextSectionData.Right == deelnemerLinks)
+                        {
+                            nextSectionData.Right = null;
+                        }
+                    }
+
+                    if (currentSection == track.Sections.ElementAt(0) && nextSection == track.Sections.ElementAt(1))
+                    {
+                        deelnemerRechts.LapCount++;
+                    }
+                    
+                    currentSectionData.Right = null;
+                    currentSectionData.DistanceRight = 0;
+                    _positions.Add(currentSection, currentSectionData);
                     _positions.Add(nextSection, nextSectionData);
                 }
             }
@@ -196,53 +210,18 @@ namespace Controller
 
         public void BerekenAfstandSection()
         {
-            //LinkedListNode<Section> previousLinkedListNode = huidigeSection.Previous;
-            //LinkedListNode<Section> currentLinkedListNode = huidigeSection;
-            //LinkedListNode<Section> nextLinkedListNode = huidigeSection.Next;
-
-            //if (GetSectionData(currentLinkedListNode.Value) == null)
-            //{
-            //    huidigeSection = nextLinkedListNode;
-            //    BerekenAfstandSection();
-            //    Debug.WriteLine("section is null");
-            //}
-
-            //if (nextLinkedListNode == null)
-            //{
-            //    nextLinkedListNode = track.Sections.First;
-            //}
-
-            //if (previousLinkedListNode == null)
-            //{
-            //    previousLinkedListNode = track.Sections.Last;
-            //}
-
-            //SectionData currentSectionData = GetSectionData(currentLinkedListNode.Value);
-            //SectionData previousSectionData = GetSectionData(previousLinkedListNode.Value);
-            //SectionData nextSectionData = GetSectionData(nextLinkedListNode.Value);
-
             for (int i = _index - 1; i >= 0; i--)
             {
-                //previousSectionData = GetSectionData(track.Sections.ElementAt(i - 1));
-                //currentSectionData = GetSectionData(track.Sections.ElementAt(i));
                 Section currentSection;
                 Section nextSection;
 
-                if (i == 17)
+                if (i == track.Sections.Count - 1)
                 {
                     currentSection = track.Sections.Last.Value;
                     nextSection = track.Sections.First.Value;
                     currentSectionData = GetSectionData(currentSection);
                     nextSectionData = GetSectionData(nextSection);
                 }
-
-                //if (i + 1 == track.Sections.Count)
-                //{
-                //    currentSection = track.Sections.Last.Value;
-                //    nextSection = track.Sections.First.Value;
-                //    currentSectionData = GetSectionData(currentSection);
-                //    nextSectionData = GetSectionData(nextSection);
-                //}
                 else
                 {
                     currentSection = track.Sections.ElementAt(i);
@@ -254,236 +233,25 @@ namespace Controller
                 iParticipant deelnemerRechts = currentSectionData.Right;
                 iParticipant deelnemerLinks = currentSectionData.Left;
 
-
                 if (deelnemerLinks != null && deelnemerRechts == null)
                 {
                     currentSectionData.DistanceLeft += (deelnemerLinks.Performance * deelnemerLinks.Speed);
-
-                    //Debug.WriteLine("==========");
-
-                    //Debug.Write(currentSectionData.Left.Name + "\t");
-                    //Debug.Write(currentSectionData.DistanceLeft + "\n");
-
-
-                    //Debug.WriteLine("==========");
                 }
 
                 if (deelnemerLinks == null && deelnemerRechts != null)
                 {
                     currentSectionData.DistanceRight += (deelnemerRechts.Performance * deelnemerRechts.Speed);
-
-                    //Debug.WriteLine("==========");
-
-                    //Debug.Write(currentSectionData.Right.Name + "\t");
-                    //Debug.Write(currentSectionData.DistanceRight + "\n");
-
-
-                    //Debug.WriteLine("==========");
                 }
 
                 if (deelnemerLinks != null && deelnemerRechts != null)
                 {
                     currentSectionData.DistanceLeft += (deelnemerLinks.Performance * deelnemerLinks.Speed);
-
-                    //Debug.WriteLine("==========");
-
-                    //Debug.Write(currentSectionData.Left.Name + "\t");
-                    //Debug.Write(currentSectionData.DistanceLeft + "\n");
-
                     currentSectionData.DistanceRight += (deelnemerRechts.Performance * deelnemerRechts.Speed);
-
-                    //Debug.Write(currentSectionData.Right.Name + "\t");
-                    //Debug.Write(currentSectionData.DistanceRight + "\n");
-
-
-                    //Debug.WriteLine("==========");
                 }
 
-                //=============================== met sectionData
-
-                if (currentSectionData.DistanceLeft >= 100)
+                if (currentSectionData.DistanceLeft >= 100 || currentSectionData.DistanceRight >= 100)
                 {
-                    if (nextSectionData.Left == null)
-                    {
-
-                        SetSectionData(currentSection, nextSection, deelnemerLinks, deelnemerRechts);
-
-                        nextSectionData.Left = deelnemerLinks;
-                        currentSectionData.Left = null;
-
-                        ///Debug.WriteLine($"nextSection {deelnemerLinks.Name} links {track.Sections.ElementAt(i + 1).SectionType}");
-
-                        //_positions[currentLinkedListNode.Value].DistanceLeft = 0;
-
-                        //currentSectionData.Left = null;
-
-                        //nextSectionData.DistanceLeft = 0;
-                        //currentSectionData.DistanceLeft = 0;
-                    }
-                    else if (nextSectionData.Right == null)
-                    {
-
-                        SetSectionData(currentSection, nextSection, deelnemerLinks, deelnemerRechts);
-
-                        nextSectionData.Right = deelnemerLinks;
-                        currentSectionData.Left = null;
-
-                        ///Debug.WriteLine($"nextSection {deelnemerLinks.Name} rechts {track.Sections.ElementAt(i + 1).SectionType}");
-
-                        //_positions[currentLinkedListNode.Value].DistanceLeft = 0;
-
-                        //currentSectionData.Left = null;
-
-                        //nextSectionData.DistanceRight = 0;
-                        //currentSectionData.DistanceLeft = 0;
-                    }
-                    else if (nextSectionData.Left != null && nextSectionData.Right != null)
-                    {
-                        //_positions[currentLinkedListNode.Value].DistanceLeft = 0;
-                        currentSectionData.DistanceLeft = 0;
-
-                        //SetSectionData(currentLinkedListNode.Value, deelnemerLinks);
-
-                        ///Debug.WriteLine("nextSection is vol");
-                    }
-                    //Debug.WriteLine($"{currentSectionData.Left} linksNextSection");
-                }
-
-                if (currentSectionData.DistanceRight >= 100)
-                {
-                    if (nextSectionData.Left == null)
-                    {
-
-                        SetSectionData(currentSection, nextSection, deelnemerLinks, deelnemerRechts);
-
-                        nextSectionData.Left = deelnemerRechts;
-                        currentSectionData.Right = null;
-
-                        ///Debug.WriteLine($"nextSection {deelnemerRechts.Name} links {track.Sections.ElementAt(i + 1).SectionType}");
-
-                        //_positions[currentLinkedListNode.Value].DistanceRight = 0;
-
-                        //currentSectionData.Right = null;
-
-                        //nextSectionData.DistanceLeft = 0;
-                        //currentSectionData.DistanceRight = 0;
-                    }
-                    else if (nextSectionData.Right == null)
-                    {
-
-                        SetSectionData(currentSection, nextSection, deelnemerLinks, deelnemerRechts);
-
-                        nextSectionData.Right = deelnemerRechts;
-                        currentSectionData.Right = null;
-
-                        ///Debug.WriteLine($"nextSection {deelnemerRechts.Name} rechts {track.Sections.ElementAt(i + 1).SectionType}");
-
-                        //_positions[currentLinkedListNode.Value].DistanceRight = 0;
-
-                        //currentSectionData.Right = null;
-
-                        //nextSectionData.DistanceRight = 0;
-                        //currentSectionData.DistanceRight = 0;
-                    }
-                    else if (nextSectionData.Left != null && nextSectionData.Right != null)
-                    {
-                        //_positions[currentLinkedListNode.Value].DistanceRight = 0;
-                        currentSectionData.DistanceRight = 0;
-
-                        //SetSectionData(currentLinkedListNode.Value, deelnemerRechts);
-
-                        ///Debug.WriteLine("nextSection is vol");
-                    }
-                    //Debug.WriteLine($"{currentSectionData.Right} rechtsNextSection");
-                }
-
-                //=============================== met dictionary
-
-                //if (currentSectionData.DistanceLeft >= 100)
-                //{
-                //    if (_positions[nextLinkedListNode.Value].Left == null)
-                //    {
-                //        _positions[nextLinkedListNode.Value].Left = deelnemerLinks;
-                //        _positions[currentLinkedListNode.Value].Left = null;
-
-                //        Debug.WriteLine($"nextSection {deelnemerLinks.Name}");
-
-                //        _positions[currentLinkedListNode.Value].DistanceLeft = 0;
-                //        _positions[nextLinkedListNode.Value].DistanceLeft = 0;
-                //    }
-                //    else if (_positions[nextLinkedListNode.Value].Right == null)
-                //    {
-                //        _positions[nextLinkedListNode.Value].Right = deelnemerLinks;
-                //        _positions[currentLinkedListNode.Value].Left = null;
-
-                //        Debug.WriteLine($"nextSection {deelnemerLinks.Name}");
-
-                //        _positions[currentLinkedListNode.Value].DistanceLeft = 0;
-                //        _positions[nextLinkedListNode.Value].DistanceRight = 0;
-                //    }
-                //    else if (nextSectionData.Left != null && nextSectionData.Right != null)
-                //    {
-                //        _positions[currentLinkedListNode.Value].DistanceLeft = 0;
-
-                //        Debug.WriteLine("nextSection is vol");
-                //    }
-                //    //Debug.WriteLine($"{currentSectionData.Left} linksNextSection");
-                //}
-
-                //if (currentSectionData.DistanceRight >= 100)
-                //{
-                //    if (_positions[nextLinkedListNode.Value].Left == null)
-                //    {
-                //        _positions[nextLinkedListNode.Value].Left = deelnemerRechts;
-                //        _positions[currentLinkedListNode.Value].Right = null;
-
-                //        Debug.WriteLine($"nextSection {deelnemerRechts.Name}");
-
-                //        _positions[currentLinkedListNode.Value].DistanceRight = 0;
-                //        _positions[nextLinkedListNode.Value].DistanceLeft = 0;
-                //    }
-                //    else if (_positions[nextLinkedListNode.Value].Right == null)
-                //    {
-                //        _positions[nextLinkedListNode.Value].Right = deelnemerRechts;
-                //        _positions[currentLinkedListNode.Value].Right = null;
-
-                //        Debug.WriteLine($"nextSection {deelnemerRechts.Name}");
-
-                //        _positions[currentLinkedListNode.Value].DistanceRight = 0;
-                //        _positions[nextLinkedListNode.Value].DistanceRight = 0;
-                //    }
-                //    else if (nextSectionData.Left != null && nextSectionData.Right != null)
-                //    {
-                //        _positions[currentLinkedListNode.Value].DistanceRight = 0;
-
-                //        Debug.WriteLine("nextSection is vol");
-                //    }
-                //    //Debug.WriteLine($"{currentSectionData.Right} rechtsNextSection");
-                //}
-            }
-
-
-            foreach (Section section in track.Sections)
-            {
-                SectionData secdat = GetSectionData(section);
-                Debug.WriteLine(section.SectionType.ToString());
-
-                if (secdat.Left == null)
-                {
-                    Debug.WriteLine("null");
-                }
-                else
-                {
-                    Debug.WriteLine(secdat.Left.Name + " left in sectionData");
-                }
-
-                if (secdat.Right == null)
-                {
-                    Debug.WriteLine("null");
-                }
-                else
-                {
-                    Debug.WriteLine(secdat.Right.Name + " right in sectionData");
+                    SetSectionData(currentSection, nextSection, deelnemerLinks, deelnemerRechts);
                 }
             }
         }
@@ -493,8 +261,8 @@ namespace Controller
             foreach (iParticipant deelnemer in Participants)
             {
                 deelnemer.Quality = _random.Next(1, 100);
-                deelnemer.Performance = _random.Next(5, 10);
-                deelnemer.Speed = _random.Next(5, 10);
+                deelnemer.Performance = _random.Next(2, 12);
+                deelnemer.Speed = _random.Next(3, 8);
             }
         }
 

@@ -9,6 +9,10 @@
         public iEquipment Equipment { get; set; }
 
         public TeamColors TeamColor { get; set; }
+
+        public int LapCount { get; set; }
+
+        public bool Finished { get; set; }
     }
 
     public enum TeamColors
