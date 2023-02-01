@@ -3,7 +3,7 @@
     public class Competition
     {
 
-        public List<iParticipant> Participants { get; set; }
+        public List<iParticipant> Participants;
 
         public Queue<Track> Tracks;
 

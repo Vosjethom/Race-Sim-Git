@@ -7,8 +7,8 @@ namespace Tasker_Race_Sim
         //public delegate void DriversChanged(Track baan);
         public static void Initialize(Race race)
         {
-            Console.SetCursorPosition(0, 1);
-            //Console.BackgroundColor = ConsoleColor.Blue;
+            Console.SetCursorPosition(0, 0);
+            Console.WriteLine($"Naam circuit: {race.track.Name}");
             _race = race;
         }
 

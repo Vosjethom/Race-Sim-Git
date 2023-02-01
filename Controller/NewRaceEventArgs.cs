@@ -11,6 +11,7 @@ namespace Model
     {
         public NewRaceEventArgs()
         {
+            Data.NextRace();
         }
     }
 }

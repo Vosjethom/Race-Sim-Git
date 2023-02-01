@@ -43,8 +43,6 @@ namespace Tasker_Race_Sim
 
             Data.Initialize();
 
-            Data.NextRace();
-
             Visualization.Initialize(Data.CurrentRace);
 
             Visualization.DrawTrack(Data.CurrentRace.track);
@@ -56,7 +54,6 @@ namespace Tasker_Race_Sim
 
             Data.CurrentRace.NewRace += (sender, e) =>
             {
-                Data.NextRace();
                 Visualization.Initialize(Data.CurrentRace);
                 Visualization.DrawTrack(Data.CurrentRace.track);
                 Debug.WriteLine("volgende circuit");

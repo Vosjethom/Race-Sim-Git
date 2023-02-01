@@ -43,7 +43,7 @@ namespace Controller
             }
 
             _timer = new Timer();
-            _timer.Interval = 500;
+            _timer.Interval = 200;
             _timer.Elapsed += OnTimedEvent;
             Start();
         }
@@ -51,15 +51,16 @@ namespace Controller
         private void OnTimedEvent(object? sender, ElapsedEventArgs elapsedInterval)
         {
             BerekenAfstandSection();
-            DriversChanged?.Invoke(sender, new DriversChangedEventArgs(track));
+            DriversChanged?.Invoke(sender, new DriversChangedEventArgs() { _baan = this.track });
 
             _index = track.Sections.Count;
 
-            if (finishCheck == 4)
+            if (finishCheck == Participants.Count)
             {
                 Debug.WriteLine("Race gefinished");
                 Stop();
-                NewRace?.Invoke(sender, new NewRaceEventArgs());
+                //finishCheck = 0;
+                NewRace?.Invoke(this, new NewRaceEventArgs());
                 return;
             }
         }

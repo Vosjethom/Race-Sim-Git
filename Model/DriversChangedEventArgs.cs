@@ -5,9 +5,9 @@
     {
         public Track _baan { get; set; }
 
-        public DriversChangedEventArgs(Track baan)
+        public DriversChangedEventArgs()
         {
-           _baan = baan;
+
         }
     }
 }

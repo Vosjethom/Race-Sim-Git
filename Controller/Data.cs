@@ -4,36 +4,39 @@ namespace Controller
 {
     public static class Data
     {
-        public static Competition _competition = new Competition();
-
+        public static Competition _competition { get; set; }
         public static Race CurrentRace { get; set; }
+        public static List<iParticipant> Participants = new List<iParticipant>();
 
         public static void Initialize()
         {
-            //_competition = new Competition();
+            _competition = new Competition();
 
             AddParticipant();
-            AddTracks();
 
+            _competition.Participants = Participants;
+
+            AddTracks();
+            NextRace();
         }
 
         public static void AddParticipant()
         {
             iParticipant deelnemer = new Driver();
             deelnemer.Name = "Max Verstappen";
-            _competition.Participants.Add(deelnemer);
+            Participants.Add(deelnemer);
 
             iParticipant deelnemer2 = new Driver();
             deelnemer2.Name = "Lewis Hamilton";
-            _competition.Participants.Add(deelnemer2);
+            Participants.Add(deelnemer2);
 
             iParticipant deelnemer3 = new Driver();
             deelnemer3.Name = "Charles Leclerc";
-            _competition.Participants.Add(deelnemer3);
+            Participants.Add(deelnemer3);
 
             iParticipant deelnemer4 = new Driver();
             deelnemer4.Name = "Sergio Perez";
-            _competition.Participants.Add(deelnemer4);
+            Participants.Add(deelnemer4);
         }
 
         public static void AddTracks()
@@ -57,11 +60,27 @@ namespace Controller
 
         public static void NextRace()
         {
-            if (_competition.NextTrack != null)
+            //if (_competition.NextTrack != null)
+            //{
+            //    //AddParticipant();
+            //    CurrentRace = new Race(_competition.NextTrack(), _competition.Participants);
+            //    //CurrentRace.StartGrid(CurrentRace.track, CurrentRace.Participants);
+            //    Console.Clear();
+            //}
+
+            Track track = _competition.NextTrack();
+            if (track != null)
             {
-                CurrentRace = new Race(_competition.NextTrack(), _competition.Participants);
-                Console.Clear();
+                //Graphics.Visualise(5, 5, track);
+                //CurrentRace.Track = track;
+                //CurrentRace.Participants= Participants;
+                CurrentRace = new Race(track, Participants);
+                //foreach (IParticipant part in Participants) { 
+
+                //    CurrentRace.FinishedPlayer(part);
+                //}
             }
+            //return track;
         }
     }
 }
